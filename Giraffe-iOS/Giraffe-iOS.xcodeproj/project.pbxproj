@@ -81,6 +81,7 @@
 				30061B9C1D29209800ABEF7F /* Giraffe-iOSTests */,
 				30061BA71D29209800ABEF7F /* Giraffe-iOSUITests */,
 				30061B861D29209800ABEF7F /* Products */,
+				30061BF21D29C71C00ABEF7F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
