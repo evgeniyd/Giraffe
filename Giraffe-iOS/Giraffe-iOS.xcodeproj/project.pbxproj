@@ -14,6 +14,7 @@
 		30061B931D29209800ABEF7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30061B911D29209800ABEF7F /* LaunchScreen.storyboard */; };
 		30061B9E1D29209800ABEF7F /* Giraffe_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061B9D1D29209800ABEF7F /* Giraffe_iOSTests.swift */; };
 		30061BA91D29209800ABEF7F /* Giraffe_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061BA81D29209800ABEF7F /* Giraffe_iOSUITests.swift */; };
+		30061BF41D29C71D00ABEF7F /* Gifu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061BF31D29C71D00ABEF7F /* Gifu.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		30061BA41D29209800ABEF7F /* Giraffe-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Giraffe-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30061BA81D29209800ABEF7F /* Giraffe_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giraffe_iOSUITests.swift; sourceTree = "<group>"; };
 		30061BAA1D29209800ABEF7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30061BF31D29C71D00ABEF7F /* Gifu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gifu.framework; path = ../Carthage/Build/iOS/Gifu.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30061BF41D29C71D00ABEF7F /* Gifu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +129,14 @@
 			path = "Giraffe-iOSUITests";
 			sourceTree = "<group>";
 		};
+		30061BF21D29C71C00ABEF7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30061BF31D29C71D00ABEF7F /* Gifu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,6 +147,7 @@
 				30061B811D29209800ABEF7F /* Sources */,
 				30061B821D29209800ABEF7F /* Frameworks */,
 				30061B831D29209800ABEF7F /* Resources */,
+				30061BF51D29C73E00ABEF7F /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,6 +272,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30061BF51D29C73E00ABEF7F /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/Gifu.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		30061B811D29209800ABEF7F /* Sources */ = {
