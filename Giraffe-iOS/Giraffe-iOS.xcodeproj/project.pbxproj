@@ -14,7 +14,10 @@
 		30061B931D29209800ABEF7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30061B911D29209800ABEF7F /* LaunchScreen.storyboard */; };
 		30061B9E1D29209800ABEF7F /* Giraffe_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061B9D1D29209800ABEF7F /* Giraffe_iOSTests.swift */; };
 		30061BA91D29209800ABEF7F /* Giraffe_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061BA81D29209800ABEF7F /* Giraffe_iOSUITests.swift */; };
-		30061BF41D29C71D00ABEF7F /* Gifu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061BF31D29C71D00ABEF7F /* Gifu.framework */; };
+		30061BFA1D29CFF300ABEF7F /* 01.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF71D29CFF300ABEF7F /* 01.gif */; };
+		30061BFB1D29CFF300ABEF7F /* 02.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF81D29CFF300ABEF7F /* 02.gif */; };
+		30061BFC1D29CFF300ABEF7F /* 03.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF91D29CFF300ABEF7F /* 03.gif */; };
+		30061C021D29D3A600ABEF7F /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +51,10 @@
 		30061BA41D29209800ABEF7F /* Giraffe-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Giraffe-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30061BA81D29209800ABEF7F /* Giraffe_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giraffe_iOSUITests.swift; sourceTree = "<group>"; };
 		30061BAA1D29209800ABEF7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30061BF31D29C71D00ABEF7F /* Gifu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gifu.framework; path = ../Carthage/Build/iOS/Gifu.framework; sourceTree = "<group>"; };
+		30061BF71D29CFF300ABEF7F /* 01.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 01.gif; path = SampleGIFs/01.gif; sourceTree = "<group>"; };
+		30061BF81D29CFF300ABEF7F /* 02.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 02.gif; path = SampleGIFs/02.gif; sourceTree = "<group>"; };
+		30061BF91D29CFF300ABEF7F /* 03.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 03.gif; path = SampleGIFs/03.gif; sourceTree = "<group>"; };
+		30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = ../Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30061BF41D29C71D00ABEF7F /* Gifu.framework in Frameworks */,
+				30061C021D29D3A600ABEF7F /* FLAnimatedImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +89,8 @@
 				30061B871D29209800ABEF7F /* Giraffe-iOS */,
 				30061B9C1D29209800ABEF7F /* Giraffe-iOSTests */,
 				30061BA71D29209800ABEF7F /* Giraffe-iOSUITests */,
-				30061B861D29209800ABEF7F /* Products */,
 				30061BF21D29C71C00ABEF7F /* Frameworks */,
+				30061B861D29209800ABEF7F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +107,7 @@
 		30061B871D29209800ABEF7F /* Giraffe-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				30061BF61D29CF9500ABEF7F /* SampleGIFs */,
 				30061B881D29209800ABEF7F /* AppDelegate.swift */,
 				30061B8A1D29209800ABEF7F /* ViewController.swift */,
 				30061B8C1D29209800ABEF7F /* Main.storyboard */,
@@ -132,9 +139,19 @@
 		30061BF21D29C71C00ABEF7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				30061BF31D29C71D00ABEF7F /* Gifu.framework */,
+				30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30061BF61D29CF9500ABEF7F /* SampleGIFs */ = {
+			isa = PBXGroup;
+			children = (
+				30061BF71D29CFF300ABEF7F /* 01.gif */,
+				30061BF81D29CFF300ABEF7F /* 02.gif */,
+				30061BF91D29CFF300ABEF7F /* 03.gif */,
+			);
+			name = SampleGIFs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,9 +268,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30061BFB1D29CFF300ABEF7F /* 02.gif in Resources */,
 				30061B931D29209800ABEF7F /* LaunchScreen.storyboard in Resources */,
 				30061B901D29209800ABEF7F /* Assets.xcassets in Resources */,
+				30061BFC1D29CFF300ABEF7F /* 03.gif in Resources */,
 				30061B8E1D29209800ABEF7F /* Main.storyboard in Resources */,
+				30061BFA1D29CFF300ABEF7F /* 01.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +300,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/../Carthage/Build/iOS/Gifu.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/FLAnimatedImage.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
