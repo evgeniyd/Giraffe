@@ -10,6 +10,13 @@
 		30061BC41D2920FE00ABEF7F /* GiraffeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 30061BC31D2920FE00ABEF7F /* GiraffeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30061BCB1D2920FE00ABEF7F /* GiraffeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061BC01D2920FE00ABEF7F /* GiraffeKit.framework */; };
 		30061BD01D2920FE00ABEF7F /* GiraffeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061BCF1D2920FE00ABEF7F /* GiraffeKitTests.swift */; };
+		30502EA21D2D19A70092A8AD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA11D2D19A60092A8AD /* Service.swift */; };
+		30502EA31D2D19A70092A8AD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA11D2D19A60092A8AD /* Service.swift */; };
+		30502EA51D2D1AC60092A8AD /* TrendingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA41D2D1AC60092A8AD /* TrendingService.swift */; };
+		30502EA61D2D1AC60092A8AD /* TrendingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA41D2D1AC60092A8AD /* TrendingService.swift */; };
+		3089E8C21D2D943E00726903 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C11D2D943E00726903 /* SearchService.swift */; };
+		3089E8C31D2D943E00726903 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C11D2D943E00726903 /* SearchService.swift */; };
+		3089E8C51D2D9F9400726903 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C41D2D9F9400726903 /* ServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +36,10 @@
 		30061BCA1D2920FE00ABEF7F /* GiraffeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiraffeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30061BCF1D2920FE00ABEF7F /* GiraffeKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeKitTests.swift; sourceTree = "<group>"; };
 		30061BD11D2920FE00ABEF7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30502EA11D2D19A60092A8AD /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		30502EA41D2D1AC60092A8AD /* TrendingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingService.swift; sourceTree = "<group>"; };
+		3089E8C11D2D943E00726903 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		3089E8C41D2D9F9400726903 /* ServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +84,9 @@
 			children = (
 				30061BC31D2920FE00ABEF7F /* GiraffeKit.h */,
 				30061BC51D2920FE00ABEF7F /* Info.plist */,
+				30502EA11D2D19A60092A8AD /* Service.swift */,
+				30502EA41D2D1AC60092A8AD /* TrendingService.swift */,
+				3089E8C11D2D943E00726903 /* SearchService.swift */,
 			);
 			path = GiraffeKit;
 			sourceTree = "<group>";
@@ -81,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				30061BCF1D2920FE00ABEF7F /* GiraffeKitTests.swift */,
+				3089E8C41D2D9F9400726903 /* ServiceTests.swift */,
 				30061BD11D2920FE00ABEF7F /* Info.plist */,
 			);
 			path = GiraffeKitTests;
@@ -150,6 +165,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = QL6S7D28EA;
 						DevelopmentTeamName = "Yevhen Dubinin";
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					30061BC91D2920FE00ABEF7F = {
@@ -200,6 +216,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3089E8C21D2D943E00726903 /* SearchService.swift in Sources */,
+				30502EA51D2D1AC60092A8AD /* TrendingService.swift in Sources */,
+				30502EA21D2D19A70092A8AD /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +226,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30502EA61D2D1AC60092A8AD /* TrendingService.swift in Sources */,
+				3089E8C31D2D943E00726903 /* SearchService.swift in Sources */,
 				30061BD01D2920FE00ABEF7F /* GiraffeKitTests.swift in Sources */,
+				30502EA31D2D19A70092A8AD /* Service.swift in Sources */,
+				3089E8C51D2D9F9400726903 /* ServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +345,7 @@
 		30061BD51D2920FE00ABEF7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -332,13 +356,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.devgeniy.GiraffeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		30061BD61D2920FE00ABEF7F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -349,7 +375,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.devgeniy.GiraffeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -394,6 +420,7 @@
 				30061BD61D2920FE00ABEF7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30061BD71D2920FE00ABEF7F /* Build configuration list for PBXNativeTarget "GiraffeKitTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +429,7 @@
 				30061BD91D2920FE00ABEF7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
