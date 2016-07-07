@@ -37,9 +37,8 @@ class ViewController: UIViewController {
                         return SignalProducer.empty
                 }
             }
-            .map { (data, URLResponse) -> String in
-                let string = String(data: data, encoding: NSUTF8StringEncoding)!
-                return string
+            .map { (data, URLResponse) -> DecodingResult<Response> in
+                return Response.decodedFrom(data: data, response: URLResponse)
             }
             .observeOn(UIScheduler())
         

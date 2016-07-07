@@ -1,3 +1,4 @@
 # GIFs animation
 github "Flipboard/FLAnimatedImage"
 github "ReactiveCocoa/ReactiveCocoa" "swift2.3"
+github "hkellaway/Gloss" "swift_2.3"
