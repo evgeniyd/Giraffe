@@ -10,7 +10,7 @@
 		30015A381D2B0A9C00FBF1D6 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30015A361D2B0A9C00FBF1D6 /* ReactiveCocoa.framework */; };
 		30015A391D2B0A9C00FBF1D6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30015A371D2B0A9C00FBF1D6 /* Result.framework */; };
 		30061B891D29209800ABEF7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061B881D29209800ABEF7F /* AppDelegate.swift */; };
-		30061B8B1D29209800ABEF7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061B8A1D29209800ABEF7F /* ViewController.swift */; };
+		30061B8B1D29209800ABEF7F /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061B8A1D29209800ABEF7F /* TrendingViewController.swift */; };
 		30061B8E1D29209800ABEF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30061B8C1D29209800ABEF7F /* Main.storyboard */; };
 		30061B901D29209800ABEF7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30061B8F1D29209800ABEF7F /* Assets.xcassets */; };
 		30061B931D29209800ABEF7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30061B911D29209800ABEF7F /* LaunchScreen.storyboard */; };
@@ -22,6 +22,8 @@
 		30061C021D29D3A600ABEF7F /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */; };
 		3089E8C91D2DA88700726903 /* GiraffeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3089E8C81D2DA88700726903 /* GiraffeKit.framework */; };
 		3089E8CA1D2DA88700726903 /* GiraffeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3089E8C81D2DA88700726903 /* GiraffeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30A3B90B1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */; };
+		30A3B90D1D2F8A3A00ADEF41 /* CommonUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A3B90C1D2F8A3A00ADEF41 /* CommonUserInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,7 @@
 		30015A371D2B0A9C00FBF1D6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		30061B851D29209800ABEF7F /* Giraffe-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Giraffe-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30061B881D29209800ABEF7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		30061B8A1D29209800ABEF7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30061B8A1D29209800ABEF7F /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		30061B8D1D29209800ABEF7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30061B8F1D29209800ABEF7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30061B921D29209800ABEF7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +78,8 @@
 		30061BF91D29CFF300ABEF7F /* 03.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 03.gif; path = SampleGIFs/03.gif; sourceTree = "<group>"; };
 		30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = ../Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		3089E8C81D2DA88700726903 /* GiraffeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GiraffeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageCollectionViewController.swift; sourceTree = "<group>"; };
+		30A3B90C1D2F8A3A00ADEF41 /* CommonUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUserInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				30061B881D29209800ABEF7F /* AppDelegate.swift */,
-				30061B8A1D29209800ABEF7F /* ViewController.swift */,
+				30061B8A1D29209800ABEF7F /* TrendingViewController.swift */,
+				30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */,
+				30A3B90C1D2F8A3A00ADEF41 /* CommonUserInterface.swift */,
 				30061BF61D29CF9500ABEF7F /* SampleGIFs */,
 				3089E8C71D2DA69800726903 /* Supporting Files */,
 			);
@@ -354,8 +360,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30061B8B1D29209800ABEF7F /* ViewController.swift in Sources */,
+				30061B8B1D29209800ABEF7F /* TrendingViewController.swift in Sources */,
+				30A3B90D1D2F8A3A00ADEF41 /* CommonUserInterface.swift in Sources */,
 				30061B891D29209800ABEF7F /* AppDelegate.swift in Sources */,
+				30A3B90B1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

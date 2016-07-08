@@ -1,46 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QtA-pf-0yw">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="xwX-lU-BID">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="QtA-pf-0yw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P6m-8Y-ZTU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PQx-Ke-P0X" kind="relationship" relationship="rootViewController" id="n66-Ng-K78"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A0W-Jr-58Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-630" y="-223"/>
+        </scene>
+        <!--Trending View Controller-->
+        <scene sceneID="TIg-2n-4ds">
+            <objects>
+                <viewController id="PQx-Ke-P0X" userLabel="Trending View Controller" customClass="TrendingViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="YNi-4U-WnA"/>
+                        <viewControllerLayoutGuide type="bottom" id="HsK-JH-GvV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="78n-O2-HQz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tP3-BU-unH">
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="j5Q-5b-hJZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xW8-kC-yoT">
+                                <connections>
+                                    <segue destination="FjY-2p-C5b" kind="embed" identifier="embedCollectionVC" id="DSz-LG-cTp"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="tP3-BU-unH" secondAttribute="trailing" constant="100" id="55v-b2-DFE"/>
-                            <constraint firstItem="tP3-BU-unH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="57" id="ret-CE-cuX"/>
-                            <constraint firstItem="tP3-BU-unH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="100" id="uDr-pC-6hZ"/>
+                            <constraint firstItem="xW8-kC-yoT" firstAttribute="leading" secondItem="78n-O2-HQz" secondAttribute="leading" id="Ajk-IX-ayL"/>
+                            <constraint firstItem="HsK-JH-GvV" firstAttribute="top" secondItem="xW8-kC-yoT" secondAttribute="bottom" id="Hl9-15-Icg"/>
+                            <constraint firstItem="xW8-kC-yoT" firstAttribute="top" secondItem="78n-O2-HQz" secondAttribute="top" id="dFv-YK-SRP"/>
+                            <constraint firstAttribute="trailing" secondItem="xW8-kC-yoT" secondAttribute="trailing" id="u9e-0m-UxR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="rRO-pZ-Ts0">
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="ecJ-Ie-qMb">
+                            <connections>
+                                <action selector="searchButtonDidPress:" destination="PQx-Ke-P0X" id="TFi-ao-hCi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="searchField" destination="tP3-BU-unH" id="h4H-3e-t4s"/>
+                        <outlet property="containerView" destination="xW8-kC-yoT" id="k6E-QA-lZw"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3my-Xn-gse" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="183.19999999999999" y="-223.53823088455775"/>
+        </scene>
+        <!--Animated Image Collection View Controller-->
+        <scene sceneID="FQd-fe-PgH">
+            <objects>
+                <collectionViewController id="FjY-2p-C5b" customClass="AnimatedImageCollectionViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="TDx-17-wWf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3g0-O4-na3">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="n5p-Pg-VVD">
+                                <frame key="frameInset" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="FjY-2p-C5b" id="VOK-Uj-2yW"/>
+                            <outlet property="delegate" destination="FjY-2p-C5b" id="G28-e4-gaY"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3b9-mL-k2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="969" y="-224"/>
         </scene>
     </scenes>
 </document>
