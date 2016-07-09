@@ -21,8 +21,9 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "120x120_icon_Giraffe_2_@2x.png",
       "scale" : "2x"
     },
     {

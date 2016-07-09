@@ -20,10 +20,15 @@
 		30061BFB1D29CFF300ABEF7F /* 02.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF81D29CFF300ABEF7F /* 02.gif */; };
 		30061BFC1D29CFF300ABEF7F /* 03.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF91D29CFF300ABEF7F /* 03.gif */; };
 		30061C021D29D3A600ABEF7F /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */; };
+		30305A3C1D3041B00059919F /* UIFont+Giraffe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30305A3B1D3041B00059919F /* UIFont+Giraffe.swift */; };
+		30305A3F1D3052F60059919F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30305A411D3052F60059919F /* InfoPlist.strings */; };
+		30305A431D3053940059919F /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30305A421D3053940059919F /* AnimatedImageCell.swift */; };
 		3089E8C91D2DA88700726903 /* GiraffeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3089E8C81D2DA88700726903 /* GiraffeKit.framework */; };
 		3089E8CA1D2DA88700726903 /* GiraffeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3089E8C81D2DA88700726903 /* GiraffeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		30A3B90B1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */; };
 		30A3B90D1D2F8A3A00ADEF41 /* CommonUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A3B90C1D2F8A3A00ADEF41 /* CommonUserInterface.swift */; };
+		30CA4C2D1D302A0100A36F69 /* UIColor+Giraffe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA4C2C1D302A0100A36F69 /* UIColor+Giraffe.swift */; };
+		30CA4C2F1D302AC000A36F69 /* UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA4C2E1D302AC000A36F69 /* UIColor+HEX.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +82,14 @@
 		30061BF81D29CFF300ABEF7F /* 02.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 02.gif; path = SampleGIFs/02.gif; sourceTree = "<group>"; };
 		30061BF91D29CFF300ABEF7F /* 03.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 03.gif; path = SampleGIFs/03.gif; sourceTree = "<group>"; };
 		30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = ../Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
+		30305A3B1D3041B00059919F /* UIFont+Giraffe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Giraffe.swift"; sourceTree = "<group>"; };
+		30305A401D3052F60059919F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		30305A421D3053940059919F /* AnimatedImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
 		3089E8C81D2DA88700726903 /* GiraffeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GiraffeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageCollectionViewController.swift; sourceTree = "<group>"; };
 		30A3B90C1D2F8A3A00ADEF41 /* CommonUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUserInterface.swift; sourceTree = "<group>"; };
+		30CA4C2C1D302A0100A36F69 /* UIColor+Giraffe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Giraffe.swift"; sourceTree = "<group>"; };
+		30CA4C2E1D302AC000A36F69 /* UIColor+HEX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HEX.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +149,8 @@
 				30061B8A1D29209800ABEF7F /* TrendingViewController.swift */,
 				30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */,
 				30A3B90C1D2F8A3A00ADEF41 /* CommonUserInterface.swift */,
+				30305A421D3053940059919F /* AnimatedImageCell.swift */,
+				30CA4C2B1D30298600A36F69 /* Framework Extensions */,
 				30061BF61D29CF9500ABEF7F /* SampleGIFs */,
 				3089E8C71D2DA69800726903 /* Supporting Files */,
 			);
@@ -191,8 +203,19 @@
 				30061B8F1D29209800ABEF7F /* Assets.xcassets */,
 				30061B911D29209800ABEF7F /* LaunchScreen.storyboard */,
 				30061B941D29209800ABEF7F /* Info.plist */,
+				30305A411D3052F60059919F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30CA4C2B1D30298600A36F69 /* Framework Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30CA4C2E1D302AC000A36F69 /* UIColor+HEX.swift */,
+				30CA4C2C1D302A0100A36F69 /* UIColor+Giraffe.swift */,
+				30305A3B1D3041B00059919F /* UIFont+Giraffe.swift */,
+			);
+			name = "Framework Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30061BFB1D29CFF300ABEF7F /* 02.gif in Resources */,
+				30305A3F1D3052F60059919F /* InfoPlist.strings in Resources */,
 				30061B931D29209800ABEF7F /* LaunchScreen.storyboard in Resources */,
 				30061B901D29209800ABEF7F /* Assets.xcassets in Resources */,
 				30061BFC1D29CFF300ABEF7F /* 03.gif in Resources */,
@@ -360,7 +384,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30305A431D3053940059919F /* AnimatedImageCell.swift in Sources */,
 				30061B8B1D29209800ABEF7F /* TrendingViewController.swift in Sources */,
+				30CA4C2F1D302AC000A36F69 /* UIColor+HEX.swift in Sources */,
+				30305A3C1D3041B00059919F /* UIFont+Giraffe.swift in Sources */,
+				30CA4C2D1D302A0100A36F69 /* UIColor+Giraffe.swift in Sources */,
 				30A3B90D1D2F8A3A00ADEF41 /* CommonUserInterface.swift in Sources */,
 				30061B891D29209800ABEF7F /* AppDelegate.swift in Sources */,
 				30A3B90B1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift in Sources */,
@@ -413,6 +441,14 @@
 				30061B921D29209800ABEF7F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		30305A411D3052F60059919F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30305A401D3052F60059919F /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

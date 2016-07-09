@@ -16,8 +16,9 @@ class TrendingViewController: UIViewController {
     
     let screenTitle = "Trending"
     
-    var searchBar = UISearchBar()
+    let searchBar = UISearchBar.giraffeSearchBar()
     var searchBarButtonItem: UIBarButtonItem?
+    
     var collectionViewController: AnimatedImageCollectionViewController!
     
     @IBOutlet weak var containerView: UIView!
@@ -30,13 +31,16 @@ class TrendingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Can replace logoImageView for titleLabel of navbar
-        navigationItem.title = screenTitle
+        self.applyCustomAppearance(DefaultViewControllerAppearance())
+        
         searchBar.delegate = self
-        searchBar.showsCancelButton = true;
-        searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        
         searchBarButtonItem = navigationItem.rightBarButtonItem
         
+        navigationItem.title = screenTitle
+        
+        
+        // RAC
         let searchStrings = self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
             .toSignalProducer()
             .map { ($0 as? RACTuple)?.first as? UISearchBar }.ignoreNil()
@@ -60,14 +64,9 @@ class TrendingViewController: UIViewController {
             }
             .observeOn(UIScheduler())
         
-        searchResults.startWithNext { results in
+        searchResults.startWithResult { results in
             print("Search results: \(results)")
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-//        self.searchField.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +79,7 @@ class TrendingViewController: UIViewController {
     private func showSearchBar() {
         searchBar.alpha = 0
         navigationItem.titleView = searchBar
-        navigationItem.setRightBarButtonItem(nil, animated: true)
+        navigationItem.setRightBarButtonItem(nil, animated: false)
         UIView.animateWithDuration(0.5, animations: {
             self.searchBar.alpha = 1
             }, completion: { finished in
@@ -97,6 +96,8 @@ class TrendingViewController: UIViewController {
                 
         })
     }
+    
+    // MARK: Debug
     
     private func testGIFsAnimation() {
         // remote
@@ -131,6 +132,16 @@ class TrendingViewController: UIViewController {
     @IBAction func searchButtonDidPress(sender: AnyObject) {
         showSearchBar()
     }
+    
+    // MARK: Status Bar
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
 }
 
 extension TrendingViewController: UISearchBarDelegate {
@@ -138,4 +149,6 @@ extension TrendingViewController: UISearchBarDelegate {
         hideSearchBar()
     }
 }
+
+extension TrendingViewController: ViewControllerAppearanceCustomizable { }
 
