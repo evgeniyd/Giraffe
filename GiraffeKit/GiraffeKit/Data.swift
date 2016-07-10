@@ -28,8 +28,12 @@ public enum DataType: String {
     case gif
 }
 
-public enum Rating {
-    case g///...add more
+public enum Rating: String {
+    case y
+    case g
+    case pg
+    case pg13 = "pg-13"
+    case r
 }
 
 public struct MetaData {

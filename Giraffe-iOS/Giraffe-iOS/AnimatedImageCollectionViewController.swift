@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnimatedImageCollectionViewController: UICollectionViewController {
+final class AnimatedImageCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

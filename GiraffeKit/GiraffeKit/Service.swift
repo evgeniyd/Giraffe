@@ -8,26 +8,40 @@
 
 import Foundation
 
+// MARK: Action Body Type/Proto
+
+public typealias ServiceActionBody = [String: String]
+
+protocol ServiceActionBodyTransformable {
+    func serviceActionBody() -> ServiceActionBody
+}
+
+// MARK: Transfer Protocol Type
+
 public enum TransferProtocol: String {
     case http, https
 }
+
+// MARK: Main Service Protocols
 
 public protocol ServiceProtocol {
     var transferProtocol: TransferProtocol { get }
     var basePath: String { get }
     var apiKey: String { get }
     var actionPath: String { get }
-    var actionBody: [String: String]? { get }
+    var actionBody: ServiceActionBody? { get }
 }
 
+/// By implementing this protocol, 
+/// type is able to be passed  as NSURLRequest
 public protocol ServiceRequestable {
-    // TODO: actionMethod() -> ServiceActionMethod - YAGNI
+    // TODO: actionMethod() -> ServiceActionMethod (e.g. GET, POST, PUT, etc.) - YAGNI
     func request() -> NSURLRequest
 }
 
-// Default implementations
+// Default implementation of ServiceProtocol & ServiceRequestable
 
-extension ServiceProtocol {
+extension ServiceProtocol { // ???: Do we need some constraints to this proto extension?
     public var transferProtocol: TransferProtocol {
         get { return .https }
     }

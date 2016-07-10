@@ -10,7 +10,8 @@ import Foundation
 
 public struct TrendingService: ServiceProtocol {
     public var actionPath = "trending"
-    public var actionBody: [String: String]? = nil
+    public var actionBody: ServiceActionBody? = nil
+    public init() { }
 }
 
 extension TrendingService: ServiceRequestable {}

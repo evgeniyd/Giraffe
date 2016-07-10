@@ -49,14 +49,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rRO-pZ-Ts0">
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="ecJ-Ie-qMb">
-                            <connections>
-                                <action selector="searchButtonDidPress:" destination="PQx-Ke-P0X" id="TFi-ao-hCi"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="ecJ-Ie-qMb"/>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="xW8-kC-yoT" id="k6E-QA-lZw"/>
+                        <outlet property="searchButton" destination="ecJ-Ie-qMb" id="Bqm-7e-psK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3my-Xn-gse" userLabel="First Responder" sceneMemberID="firstResponder"/>
