@@ -39,11 +39,18 @@
                                     <segue destination="FjY-2p-C5b" kind="embed" identifier="embedCollectionVC" id="DSz-LG-cTp"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some user-facing message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5f0-Gg-2NB" userLabel="Message Label">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xW8-kC-yoT" firstAttribute="leading" secondItem="78n-O2-HQz" secondAttribute="leading" id="Ajk-IX-ayL"/>
                             <constraint firstItem="HsK-JH-GvV" firstAttribute="top" secondItem="xW8-kC-yoT" secondAttribute="bottom" id="Hl9-15-Icg"/>
+                            <constraint firstItem="5f0-Gg-2NB" firstAttribute="centerX" secondItem="78n-O2-HQz" secondAttribute="centerX" id="PlI-7k-IfE"/>
+                            <constraint firstItem="5f0-Gg-2NB" firstAttribute="centerY" secondItem="78n-O2-HQz" secondAttribute="centerY" id="T0f-1X-nRZ"/>
                             <constraint firstItem="xW8-kC-yoT" firstAttribute="top" secondItem="78n-O2-HQz" secondAttribute="top" id="dFv-YK-SRP"/>
                             <constraint firstAttribute="trailing" secondItem="xW8-kC-yoT" secondAttribute="trailing" id="u9e-0m-UxR"/>
                         </constraints>
@@ -53,6 +60,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="xW8-kC-yoT" id="k6E-QA-lZw"/>
+                        <outlet property="messageLabel" destination="5f0-Gg-2NB" id="UPs-hE-3H4"/>
                         <outlet property="searchButton" destination="ecJ-Ie-qMb" id="Bqm-7e-psK"/>
                     </connections>
                 </viewController>
@@ -68,20 +76,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="3g0-O4-na3">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="3g0-O4-na3">
                             <size key="itemSize" width="186" height="186"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimatedImageCellIdentifier" id="n5p-Pg-VVD" customClass="AnimatedImageCell" customModule="Giraffe_iOS" customModuleProvider="target">
-                                <frame key="frameInset" minX="1" minY="1" width="186" height="186"/>
+                                <frame key="frameInset" width="186" height="186"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="186" height="186"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAU-DG-Ete" userLabel="Animated Image View" customClass="FLAnimatedImageView"/>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="UAU-DG-Ete" firstAttribute="top" secondItem="n5p-Pg-VVD" secondAttribute="top" id="0Ve-r0-zKe"/>
+                                    <constraint firstItem="UAU-DG-Ete" firstAttribute="leading" secondItem="n5p-Pg-VVD" secondAttribute="leading" id="Myy-nc-BpA"/>
+                                    <constraint firstAttribute="bottom" secondItem="UAU-DG-Ete" secondAttribute="bottom" id="OXk-RX-xbW"/>
+                                    <constraint firstAttribute="trailing" secondItem="UAU-DG-Ete" secondAttribute="trailing" id="e8z-9Z-Mcw"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="animatedImageView" destination="UAU-DG-Ete" id="pTt-0r-y5H"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

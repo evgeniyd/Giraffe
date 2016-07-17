@@ -18,6 +18,7 @@
 		3089E8C21D2D943E00726903 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C11D2D943E00726903 /* SearchService.swift */; };
 		3089E8C31D2D943E00726903 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C11D2D943E00726903 /* SearchService.swift */; };
 		3089E8C51D2D9F9400726903 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C41D2D9F9400726903 /* ServiceTests.swift */; };
+		30A0C2291D3C4E6400627ECB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0C2281D3C4E6300627ECB /* Error.swift */; };
 		30E11C3A1D2F0674009F557B /* Data+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E11C391D2F0674009F557B /* Data+Decodable.swift */; };
 		30E11C3B1D2F0674009F557B /* Data+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E11C391D2F0674009F557B /* Data+Decodable.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		30502EA41D2D1AC60092A8AD /* TrendingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingService.swift; sourceTree = "<group>"; };
 		3089E8C11D2D943E00726903 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		3089E8C41D2D9F9400726903 /* ServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
+		30A0C2281D3C4E6300627ECB /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		30E11C391D2F0674009F557B /* Data+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Decodable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				3089E8C11D2D943E00726903 /* SearchService.swift */,
 				3004A3291D2E5B8300431941 /* Data.swift */,
 				30E11C391D2F0674009F557B /* Data+Decodable.swift */,
+				30A0C2281D3C4E6300627ECB /* Error.swift */,
 			);
 			path = GiraffeKit;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				30502EA51D2D1AC60092A8AD /* TrendingService.swift in Sources */,
 				30502EA21D2D19A70092A8AD /* Service.swift in Sources */,
 				3004A32A1D2E5B8300431941 /* Data.swift in Sources */,
+				30A0C2291D3C4E6400627ECB /* Error.swift in Sources */,
 				30E11C3A1D2F0674009F557B /* Data+Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

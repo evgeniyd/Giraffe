@@ -11,24 +11,36 @@ import FLAnimatedImage
 
 class AnimatedImageCell: UICollectionViewCell {
     
-    private func testGIFsAnimation() {
-        
-        // remote
-        let image = FLAnimatedImage.init(animatedGIFData: NSData(contentsOfURL: NSURL(string: "https://media1.giphy.com/media/l46CpUy7GwBmjP8QM/200.gif")!))
-        let imageView = FLAnimatedImageView()
-        imageView.animatedImage = image
-        imageView.frame = CGRect(origin: CGPoint(x:0.0, y: 0.0), size: CGSize(width: contentView.bounds.width, height: contentView.bounds.height) )
-        self.contentView.addSubview(imageView)
-        
-        // local
-//        let pathForFile = NSBundle.mainBundle().pathForResource("02", ofType: "gif")
-//        let url = NSURL.fileURLWithPath(pathForFile!)
-//        let data = NSData(contentsOfURL: url)
-//        let imageLocal = FLAnimatedImage.init(animatedGIFData: data)
-//        let imageViewLocal = FLAnimatedImageView()
-//        imageViewLocal.animatedImage = imageLocal
-//        imageViewLocal.frame = CGRect(origin: CGPoint(x:100.0, y: 0.0), size: CGSize(width:  100.0, height: 100.0) )
-//        self.contentView.addSubview(imageViewLocal)
+    @IBOutlet weak var animatedImageView: FLAnimatedImageView!
+    
+    override init(frame: CGRect) {
+        fatalError("init(frame:) is not implemented")
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.contentView.backgroundColor = UIColor.giraffeOrange()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // some code...
+    }
+    
+    func configureWith(viewModel: AnimatedImageViewModelType) {
+        // local
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let pathForFile = NSBundle.mainBundle().pathForResource("01", ofType: "gif")
+            let url = NSURL.fileURLWithPath(pathForFile!)
+            let data = NSData(contentsOfURL: url)
+            let imageLocal = FLAnimatedImage.init(animatedGIFData: data)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.animatedImageView.animatedImage = imageLocal
+            })
+        }
+        
+        // remote
+//        let image = FLAnimatedImage.init(animatedGIFData: NSData(contentsOfURL: NSURL(string: "https://media1.giphy.com/media/l46CpUy7GwBmjP8QM/200.gif")!))
+//        self.animatedImageView?.animatedImage = image
+    }
 }

@@ -99,7 +99,7 @@ public struct ResponseMeta { }
 public struct Response {
     //var meta: ResponseMeta
     //var page: Page
-    var data: [DataItem]
+    public var data: [DataItem]
 }
 //////////////////
 // obtain different variants of image
