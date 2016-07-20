@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3004A32A1D2E5B8300431941 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004A3291D2E5B8300431941 /* Data.swift */; };
 		30061BC41D2920FE00ABEF7F /* GiraffeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 30061BC31D2920FE00ABEF7F /* GiraffeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30061BCB1D2920FE00ABEF7F /* GiraffeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061BC01D2920FE00ABEF7F /* GiraffeKit.framework */; };
 		30061BD01D2920FE00ABEF7F /* GiraffeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061BCF1D2920FE00ABEF7F /* GiraffeKitTests.swift */; };
@@ -15,12 +14,22 @@
 		30502EA31D2D19A70092A8AD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA11D2D19A60092A8AD /* Service.swift */; };
 		30502EA51D2D1AC60092A8AD /* TrendingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA41D2D1AC60092A8AD /* TrendingService.swift */; };
 		30502EA61D2D1AC60092A8AD /* TrendingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA41D2D1AC60092A8AD /* TrendingService.swift */; };
+		307DF0EA1D3ECB5B003EFE41 /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307DF0E91D3ECB5B003EFE41 /* Unbox.framework */; };
+		307DF0F11D3ED215003EFE41 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DF0F01D3ED215003EFE41 /* Response.swift */; };
+		307DF0F51D3EDF01003EFE41 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DF0F41D3EDF01003EFE41 /* Decodable.swift */; };
 		3089E8C21D2D943E00726903 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C11D2D943E00726903 /* SearchService.swift */; };
 		3089E8C31D2D943E00726903 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C11D2D943E00726903 /* SearchService.swift */; };
 		3089E8C51D2D9F9400726903 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089E8C41D2D9F9400726903 /* ServiceTests.swift */; };
 		30A0C2291D3C4E6400627ECB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0C2281D3C4E6300627ECB /* Error.swift */; };
-		30E11C3A1D2F0674009F557B /* Data+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E11C391D2F0674009F557B /* Data+Decodable.swift */; };
-		30E11C3B1D2F0674009F557B /* Data+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E11C391D2F0674009F557B /* Data+Decodable.swift */; };
+		30A357F01D3EF06F00B6183F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357EF1D3EF06F00B6183F /* Item.swift */; };
+		30A357F21D3EF0F100B6183F /* Response+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357F11D3EF0F100B6183F /* Response+Decodable.swift */; };
+		30A357F41D3EF1BE00B6183F /* Framable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357F31D3EF1BE00B6183F /* Framable.swift */; };
+		30A357F61D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357F51D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift */; };
+		30A357F81D3EF66B00B6183F /* NSDateFormatter+GiraffeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357F71D3EF66B00B6183F /* NSDateFormatter+GiraffeKitTests.swift */; };
+		30A357F91D3EF78800B6183F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357EF1D3EF06F00B6183F /* Item.swift */; };
+		30A357FA1D3EF7EA00B6183F /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307DF0E91D3ECB5B003EFE41 /* Unbox.framework */; };
+		30A357FB1D3EF91A00B6183F /* NSDateFormatter+GiraffeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357F51D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift */; };
+		30A357FD1D3EFA6500B6183F /* Unbox.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 307DF0E91D3ECB5B003EFE41 /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,8 +42,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		30A357FC1D3EFA2900B6183F /* Carthage Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				30A357FD1D3EFA6500B6183F /* Unbox.framework in Carthage Copy Frameworks */,
+			);
+			name = "Carthage Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		3004A3291D2E5B8300431941 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		30061BC01D2920FE00ABEF7F /* GiraffeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GiraffeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30061BC31D2920FE00ABEF7F /* GiraffeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiraffeKit.h; sourceTree = "<group>"; };
 		30061BC51D2920FE00ABEF7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,10 +65,17 @@
 		30061BD11D2920FE00ABEF7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30502EA11D2D19A60092A8AD /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		30502EA41D2D1AC60092A8AD /* TrendingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingService.swift; sourceTree = "<group>"; };
+		307DF0E91D3ECB5B003EFE41 /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = ../Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
+		307DF0F01D3ED215003EFE41 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		307DF0F41D3EDF01003EFE41 /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		3089E8C11D2D943E00726903 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		3089E8C41D2D9F9400726903 /* ServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
 		30A0C2281D3C4E6300627ECB /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		30E11C391D2F0674009F557B /* Data+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Decodable.swift"; sourceTree = "<group>"; };
+		30A357EF1D3EF06F00B6183F /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		30A357F11D3EF0F100B6183F /* Response+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Response+Decodable.swift"; sourceTree = "<group>"; };
+		30A357F31D3EF1BE00B6183F /* Framable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Framable.swift; sourceTree = "<group>"; };
+		30A357F51D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+GiraffeKit.swift"; sourceTree = "<group>"; };
+		30A357F71D3EF66B00B6183F /* NSDateFormatter+GiraffeKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+GiraffeKitTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307DF0EA1D3ECB5B003EFE41 /* Unbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30061BCB1D2920FE00ABEF7F /* GiraffeKit.framework in Frameworks */,
+				30A357FA1D3EF7EA00B6183F /* Unbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +105,7 @@
 				30061BC21D2920FE00ABEF7F /* GiraffeKit */,
 				30061BCE1D2920FE00ABEF7F /* GiraffeKitTests */,
 				30061BC11D2920FE00ABEF7F /* Products */,
+				307DF0E81D3ECB5A003EFE41 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,13 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				30061BC31D2920FE00ABEF7F /* GiraffeKit.h */,
-				30061BC51D2920FE00ABEF7F /* Info.plist */,
-				30502EA11D2D19A60092A8AD /* Service.swift */,
-				30502EA41D2D1AC60092A8AD /* TrendingService.swift */,
-				3089E8C11D2D943E00726903 /* SearchService.swift */,
-				3004A3291D2E5B8300431941 /* Data.swift */,
-				30E11C391D2F0674009F557B /* Data+Decodable.swift */,
-				30A0C2281D3C4E6300627ECB /* Error.swift */,
+				307DF0ED1D3ED1C2003EFE41 /* Service */,
+				307DF0EE1D3ED1D3003EFE41 /* Model */,
+				307DF0F61D3EDF1E003EFE41 /* Common */,
+				307DF0EF1D3ED1E8003EFE41 /* Supporting Files */,
 			);
 			path = GiraffeKit;
 			sourceTree = "<group>";
@@ -106,9 +135,57 @@
 			children = (
 				30061BCF1D2920FE00ABEF7F /* GiraffeKitTests.swift */,
 				3089E8C41D2D9F9400726903 /* ServiceTests.swift */,
+				30A357F71D3EF66B00B6183F /* NSDateFormatter+GiraffeKitTests.swift */,
 				30061BD11D2920FE00ABEF7F /* Info.plist */,
 			);
 			path = GiraffeKitTests;
+			sourceTree = "<group>";
+		};
+		307DF0E81D3ECB5A003EFE41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				307DF0E91D3ECB5B003EFE41 /* Unbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		307DF0ED1D3ED1C2003EFE41 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				30502EA11D2D19A60092A8AD /* Service.swift */,
+				30502EA41D2D1AC60092A8AD /* TrendingService.swift */,
+				3089E8C11D2D943E00726903 /* SearchService.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		307DF0EE1D3ED1D3003EFE41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				30A357EF1D3EF06F00B6183F /* Item.swift */,
+				307DF0F01D3ED215003EFE41 /* Response.swift */,
+				30A357F11D3EF0F100B6183F /* Response+Decodable.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		307DF0EF1D3ED1E8003EFE41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				30061BC51D2920FE00ABEF7F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		307DF0F61D3EDF1E003EFE41 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				307DF0F41D3EDF01003EFE41 /* Decodable.swift */,
+				30A0C2281D3C4E6300627ECB /* Error.swift */,
+				30A357F31D3EF1BE00B6183F /* Framable.swift */,
+				30A357F51D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +210,7 @@
 				30061BBC1D2920FE00ABEF7F /* Frameworks */,
 				30061BBD1D2920FE00ABEF7F /* Headers */,
 				30061BBE1D2920FE00ABEF7F /* Resources */,
+				307DF0EC1D3ECF83003EFE41 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,6 +228,7 @@
 				30061BC61D2920FE00ABEF7F /* Sources */,
 				30061BC71D2920FE00ABEF7F /* Frameworks */,
 				30061BC81D2920FE00ABEF7F /* Resources */,
+				30A357FC1D3EFA2900B6183F /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,17 +300,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		307DF0EC1D3ECF83003EFE41 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/Unbox.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		30061BBB1D2920FE00ABEF7F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A357F01D3EF06F00B6183F /* Item.swift in Sources */,
+				30A357F21D3EF0F100B6183F /* Response+Decodable.swift in Sources */,
+				307DF0F51D3EDF01003EFE41 /* Decodable.swift in Sources */,
 				3089E8C21D2D943E00726903 /* SearchService.swift in Sources */,
 				30502EA51D2D1AC60092A8AD /* TrendingService.swift in Sources */,
 				30502EA21D2D19A70092A8AD /* Service.swift in Sources */,
-				3004A32A1D2E5B8300431941 /* Data.swift in Sources */,
+				30A357F41D3EF1BE00B6183F /* Framable.swift in Sources */,
 				30A0C2291D3C4E6400627ECB /* Error.swift in Sources */,
-				30E11C3A1D2F0674009F557B /* Data+Decodable.swift in Sources */,
+				30A357F61D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift in Sources */,
+				307DF0F11D3ED215003EFE41 /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,9 +341,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				30502EA61D2D1AC60092A8AD /* TrendingService.swift in Sources */,
-				30E11C3B1D2F0674009F557B /* Data+Decodable.swift in Sources */,
 				3089E8C31D2D943E00726903 /* SearchService.swift in Sources */,
+				30A357FB1D3EF91A00B6183F /* NSDateFormatter+GiraffeKit.swift in Sources */,
 				30061BD01D2920FE00ABEF7F /* GiraffeKitTests.swift in Sources */,
+				30A357F81D3EF66B00B6183F /* NSDateFormatter+GiraffeKitTests.swift in Sources */,
+				30A357F91D3EF78800B6183F /* Item.swift in Sources */,
 				30502EA31D2D19A70092A8AD /* Service.swift in Sources */,
 				3089E8C51D2D9F9400726903 /* ServiceTests.swift in Sources */,
 			);
@@ -364,6 +467,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/**",
+					"$(SRCROOT)/../Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = GiraffeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -383,6 +491,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/**",
+					"$(SRCROOT)/../Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = GiraffeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -396,6 +509,11 @@
 		30061BD81D2920FE00ABEF7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/**",
+					"$(SRCROOT)/../Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = GiraffeKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devgeniy.GiraffeKitTests;
@@ -407,6 +525,11 @@
 		30061BD91D2920FE00ABEF7F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/**",
+					"$(SRCROOT)/../Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = GiraffeKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devgeniy.GiraffeKitTests;

@@ -25,7 +25,7 @@ struct TrendingViewModel: TrendingViewModelType {
     let isActive                    = MutableProperty<Bool>(false)
     let message                     = MutableProperty("")
     private let trendingResponse    = MutableProperty<Response?>(nil)
-    let items                       = MutableProperty<[DataItem]>([])
+    let items                       = MutableProperty<[Item]>([])
     let shouldHideTrending          = MutableProperty<Bool>(true)
     
     init(model: TrendingModelType) {

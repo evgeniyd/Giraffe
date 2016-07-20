@@ -42,10 +42,10 @@ final class Trending: TrendingModelType {
                 return SignalProducer(error: networkError)
             }
             .map { data, URLResponse in
-                // TODO: refactor to use ObjectMapper
+                
                 switch Response.decodedFrom(data: data, response: URLResponse) {
-                case .Error(let parserError):
-                    print("Parsing error occurred. Error was:\n\(parserError)")
+                case .Error(let decodeError):
+                    print("Parsing error occurred. Error was:\n\(decodeError)")
                     // TODO:
 //                    return SignalProducer(error: GiraffeError.ParserError)
                     return nil

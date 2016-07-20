@@ -13,7 +13,7 @@ import GiraffeKit
 final class AnimatedImageCollectionViewController: UICollectionViewController {
     private let animatedImageCellIdentifier = "AnimatedImageCellIdentifier"
     
-    let rac_items = MutableProperty<[DataItem]>([])
+    let rac_items = MutableProperty<[Item]>([])
     
     // MARK: - View Life Cycle
     

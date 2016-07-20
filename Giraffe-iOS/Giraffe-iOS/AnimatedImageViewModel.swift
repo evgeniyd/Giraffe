@@ -10,13 +10,13 @@ import Foundation
 import GiraffeKit
 
 protocol AnimatedImageViewModelType {
-    init(model: DataItem)
+    init(model: Item)
 }
 
 struct AnimatedImageViewModel: AnimatedImageViewModelType {
-    private let model: DataItem
+    private let model: Item
     
-    init(model: DataItem) {
+    init(model: Item) {
         self.model = model
     }
 }
