@@ -17,7 +17,7 @@ final class TrendingViewController: UIViewController, ViewType {
         case embedCollectionVC
     }
     
-    var viewModel                               = TrendingViewModel(model: Trending(service: TrendingService()))
+    let viewModel: TrendingViewModel? = TrendingViewModel(model: Trending(service: TrendingService()))
     let searchBar                               = UISearchBar.giraffeSearchBar()
     var searchBarButtonItem: UIBarButtonItem?   = nil
     var collectionViewController: AnimatedImageCollectionViewController!
@@ -25,7 +25,7 @@ final class TrendingViewController: UIViewController, ViewType {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     
-    // MARK: - View Life Cycle
+    // MARK: - View Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +36,22 @@ final class TrendingViewController: UIViewController, ViewType {
         setupBindings()
     }
 
-    // MARK: - RAC Bindings
+    // MARK: - RAC Bindings -
     
     func setupBindings() {
         // Setup view helper bindings.
         self.setupViewBindings()
         
         // Setup custom bindings.
-        _ = viewModel.headline.producer.observeOn(UIScheduler()).startWithNext { next in
+        _ = viewModel!.headline.producer.observeOn(UIScheduler()).startWithNext { next in
             self.navigationItem.title = next
         }
-        messageLabel.rac_text <~ self.viewModel.message.producer.observeOn(UIScheduler())
-        containerView.rac_hidden <~ self.viewModel.shouldHideTrending.producer.observeOn(UIScheduler())
-        collectionViewController.rac_items <~ self.viewModel.items.producer.observeOn(UIScheduler())
+        messageLabel.rac_text <~ self.viewModel!.message.producer.observeOn(UIScheduler())
+        containerView.rac_hidden <~ self.viewModel!.shouldHideTrending.producer.observeOn(UIScheduler())
+        collectionViewController.rac_items <~ self.viewModel!.items.producer.observeOn(UIScheduler())
     }
 
-    // MARK: Search Bar Presentation
+    // MARK: - Search Bar Presentation -
     
     private func showSearchBar() {
         searchBar.alpha = 0
@@ -67,14 +67,14 @@ final class TrendingViewController: UIViewController, ViewType {
     private func hideSearchBar() {
         navigationItem.setRightBarButtonItem(searchBarButtonItem, animated: true)
         UIView.animateWithDuration(0.3, animations: {
-            self.navigationItem.title = self.viewModel.headline.value
+            self.navigationItem.title = self.viewModel!.headline.value
             self.navigationItem.titleView = nil
             }, completion: { finished in
                 
         })
     }
     
-    // MARK: Storyboard
+    // MARK: - Storyboard -
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // TODO: make more Swift-ty
@@ -83,12 +83,12 @@ final class TrendingViewController: UIViewController, ViewType {
         }
     }
     
-    // MARK: Status Bar
+    // MARK: - Status Bar -
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle { return .LightContent }
     override func prefersStatusBarHidden() -> Bool { return false }
     
-    // MARK: - Styling
+    // MARK: - Styling -
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -96,7 +96,7 @@ final class TrendingViewController: UIViewController, ViewType {
         applyCustomAppearance(DefaultViewControllerAppearance())
     }
     
-    // MARK: Memmory Management
+    // MARK: - Memmory Management -
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

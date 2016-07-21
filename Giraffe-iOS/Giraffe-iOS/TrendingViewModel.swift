@@ -10,23 +10,41 @@ import Foundation
 import ReactiveCocoa
 import GiraffeKit
 
-// MARK: ViewModel Protocol
 
-protocol TrendingViewModelType: ViewModelType {
-    var headline: ConstantProperty<String> { get }
-}
+// TODO: I'd be happy to create something like this:
+//
+// protocol TrendingViewModelType: ViewModelType { 
+//     /* interface used by a view */
+// }
+//
+// However, sadly, Swift cannot infer 
+// 'associatedtype VM: ViewModelType' from ViewType protocol
+// when TrendingViewModelType type is specified for 
+// 'var viewModel: TrendingViewModelType?' requirement
+// We are forced to use concrete type when conforming to ViewType protocol
+// More Info : http://stackoverflow.com/questions/37360114/unable-to-use-protocol-as-associatedtype-in-another-protocol-in-swift/37360351#37360351
 
-struct TrendingViewModel: TrendingViewModelType {
+
+// MARK: - ViewModel Protocol -
+
+struct TrendingViewModel: ViewModelType {
     private let model: TrendingModelType
     private let fetchTrendingErrorMsg   = "Something went wrong while getting trending."
     private let emptyMsg = ""
+    private let trendingResponse    = MutableProperty<Response?>(nil)
+    
+    // MARK: - ViewModelType -
+    
+    let isActive                    = MutableProperty<Bool>(false)
+    
+    // MARK: - TrendingViewModelType -
     
     let headline                    = ConstantProperty<String>("Trending")
-    let isActive                    = MutableProperty<Bool>(false)
     let message                     = MutableProperty("")
-    private let trendingResponse    = MutableProperty<Response?>(nil)
     let items                       = MutableProperty<[Item]>([])
     let shouldHideTrending          = MutableProperty<Bool>(true)
+    
+    // MARK: - Initialization -
     
     init(model: TrendingModelType) {
         self.model = model

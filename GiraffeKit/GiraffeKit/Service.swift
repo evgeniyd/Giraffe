@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Action Body Type/Proto
+// MARK: - Action Body Type/Proto -
 
 public typealias ServiceActionBody = [String: String]
 
@@ -16,13 +16,13 @@ protocol ServiceActionBodyTransformable {
     func serviceActionBody() -> ServiceActionBody
 }
 
-// MARK: - Transfer Protocol Type
+// MARK: - Transfer Protocol Type -
 
 public enum TransferProtocol: String {
     case http, https
 }
 
-// MARK: - Main Service Protocols
+// MARK: - Main Service Protocols -
 
 public protocol ServiceProtocol {
     var transferProtocol: TransferProtocol { get }

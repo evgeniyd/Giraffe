@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveCocoa
 
-
 extension ViewType where Self: UIViewController {
     func setupViewBindings() {
         let active = NSNotificationCenter.defaultCenter().rac_notifications(UIApplicationDidBecomeActiveNotification)
@@ -22,6 +21,6 @@ extension ViewType where Self: UIViewController {
                 false
         }
         
-        self.viewModel.isActive <~ merge([active, inactive])
+        self.viewModel!.isActive <~ merge([active, inactive])
     }
 }

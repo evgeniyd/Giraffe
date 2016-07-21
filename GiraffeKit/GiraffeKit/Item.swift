@@ -46,11 +46,16 @@ public enum Rating: String {
 }
 
 public struct Image {
-    var variant: ImageVariant = .unknown
-    var url: NSURL
-    TODO: transform this
-//    var size: CGSize
-//    var fileSize: UInt
+    public var variant: ImageVariant = .unknown
+    public var url: NSURL
+    public var width: CGFloat
+    public var height: CGFloat
+    
+    // MARK: - Convenience methods -
+    
+    public var size: CGSize {
+        get { return CGSizeMake(self.width, self.height); }
+    }
     
     mutating func specify(variant newVariant: ImageVariant) {
         self.variant = newVariant
@@ -105,6 +110,8 @@ extension Item: Unboxable {
         
         self.images = []
         
+        // unboxing image variants
+        
         var fixedHeightImage: Image  = unboxer.unbox("images.fixed_height", isKeyPath: true)
         fixedHeightImage.specify(variant: .fixedHeight)
         self.images.append(fixedHeightImage)
@@ -131,5 +138,7 @@ extension Image: Unboxable {
     public init(unboxer: Unboxer) {
         self.url = unboxer.unbox("url")
         self.variant = .unknown
+        self.width = unboxer.unbox("width")
+        self.height = unboxer.unbox("height")
     }
 }

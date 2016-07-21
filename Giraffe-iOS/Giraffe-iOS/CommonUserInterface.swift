@@ -12,7 +12,7 @@ import UIKit
 // Semantic data type
 typealias SegueIdentifier = String
 
-// MARK: Common View Controller Appearance
+// MARK: - Common View Controller Appearance -
 
 protocol ViewControllerAppearance {
     var navigationBarBackgroundColor: UIColor { get }
@@ -43,7 +43,7 @@ extension ViewControllerAppearanceCustomizable where Self: UIViewController {
     }
 }
 
-// MARK: Status Bar for Navigation Ctrl
+// MARK: - Status Bar for Navigation Ctrl -
 
 extension UINavigationController {
     public override func childViewControllerForStatusBarHidden() -> UIViewController? {
@@ -55,7 +55,7 @@ extension UINavigationController {
     }
 }
 
-// MARK: Search Bar
+// MARK: - Search Bar -
 
 extension UISearchBar {
     class func giraffeSearchBar() -> UISearchBar {
@@ -69,7 +69,7 @@ extension UISearchBar {
     }
 }
 
-// MARK: Global Appearance
+// MARK: - Global Appearance -
 
 extension UIApplication {
     func applyGlobalAppearance() {

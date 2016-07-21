@@ -15,14 +15,14 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
     
     let rac_items = MutableProperty<[Item]>([])
     
-    // MARK: - View Life Cycle
+    // MARK: - View Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupBindings()
     }
     
-    // MARK: - Collection View Data Source
+    // MARK: - Collection View Data Source -
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.rac_items.value.count
@@ -35,14 +35,14 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
         return animatedImageCell
     }
     
-    // MARK: - UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout -
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         let width = collectionView.bounds.width
         return CGSizeMake(width/2.0, width/2.0)
     }
     
-    // MARK: - RAC binding
+    // MARK: - RAC binding -
     
     private func setupBindings() {
         self.rac_items.producer.on (next: { _ in
@@ -50,9 +50,9 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
         }).start()
     }
     
-    // MARK: - Data Helpers
+    // MARK: - Data Helpers -
     
-    private func viewModelFor(indexPath: NSIndexPath) -> AnimatedImageViewModelType {
+    private func viewModelFor(indexPath: NSIndexPath) -> AnimatedImageViewModel {
         let row = indexPath.row
         let model = self.rac_items.value[row]
         let viewModel = AnimatedImageViewModel(model: model)

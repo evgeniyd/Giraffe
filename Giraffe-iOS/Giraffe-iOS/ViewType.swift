@@ -7,11 +7,9 @@
 //
 
 import Foundation
-import UIKit
-import ReactiveCocoa
 
 protocol ViewType {
     associatedtype VM: ViewModelType
-    var viewModel: VM { get }
+    var viewModel: VM? { get }
     func setupBindings()
 }

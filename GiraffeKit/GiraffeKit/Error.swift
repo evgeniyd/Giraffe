@@ -23,7 +23,7 @@ public enum GiraffeError: ErrorType, CustomStringConvertible {
         return NSError(domain: GiraffeErrorDomain, code: 0, userInfo: nil)
     }
     
-    // MARK: - CustomStringConvertible
+    // MARK: - CustomStringConvertible -
     
     public var description: String {
         switch self {

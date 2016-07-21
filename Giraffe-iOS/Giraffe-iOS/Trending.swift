@@ -10,15 +10,13 @@ import Foundation
 import ReactiveCocoa
 import GiraffeKit
 
-// TODO: consider to move it under the roof of GiraffeKit framework
-
-// MARK: Model Protocol
+// MARK: - Model Protocol -
 
 protocol TrendingModelType {
     func whatsTrending() -> SignalProducer<Response?, GiraffeError>
 }
 
-// MARK: Model Implementation
+// MARK: - Model Implementation -
 
 final class Trending: TrendingModelType {
     let service: TrendingService
