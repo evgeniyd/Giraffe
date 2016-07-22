@@ -30,8 +30,8 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(animatedImageCellIdentifier, forIndexPath: indexPath)
-        let animatedImageCell = cell as! AnimatedImageCell
-        animatedImageCell.configureWith(self.viewModelFor(indexPath))
+        let animatedImageCell = cell as! AnimatedImageCell // check agains conforming to a protocol, not a concrete type
+        animatedImageCell.bind(viewModel: self.viewModelFor(indexPath))
         return animatedImageCell
     }
     

@@ -10,7 +10,7 @@ import Foundation
 
 /// The protocol helps to incapsulate the image data variant
 /// required by current framework user
-protocol Framable {
+public protocol Framable {
     func singleFrame() -> Image
     func multiFrame() -> Image
 }
@@ -18,13 +18,13 @@ protocol Framable {
 /// Default implementation
 
 extension Item: Framable {
-    func singleFrame() -> Image {
+    public func singleFrame() -> Image {
         return self.images
             .indexOf { $0.variant == ImageVariant.fixedHeightStill }
             .map { self.images[$0]}!
     }
     
-    func multiFrame() -> Image {
+    public func multiFrame() -> Image {
         return self.images
             .indexOf { $0.variant == ImageVariant.fixedHeight }
             .map { self.images[$0]}!

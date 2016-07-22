@@ -99,14 +99,20 @@ public enum ImageVariant {
 // MARK: - Unboxable extension -
 ////////////////////////////////////
 
-private let dateFormatter = NSDateFormatter.giraffeDateFormatter()
+private struct Static {
+    static let dateFormatter : NSDateFormatter = {
+        let formatter = NSDateFormatter.giraffeDateFormatter()
+        return formatter
+    }()
+}
+
 
 extension Item: Unboxable {
     public init(unboxer: Unboxer) {
         self.id = unboxer.unbox("id")
         self.type = unboxer.unbox("type")
         self.rating = unboxer.unbox("rating")
-        self.trendingDate = unboxer.unbox("trending_datetime", formatter: dateFormatter)
+        self.trendingDate = unboxer.unbox("trending_datetime", formatter: Static.dateFormatter)
         
         self.images = []
         

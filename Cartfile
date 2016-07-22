@@ -1,4 +1,5 @@
-# GIFs animation
 github "Flipboard/FLAnimatedImage" ~> 1.0.12
 github "ReactiveCocoa/ReactiveCocoa" "5e634b800fa283fefaeb962da7a570138566cb8c"
 github "johnsundell/unbox" ~> 1.8
+github "evgeniyd/Nuke" "Swift_2_3"
+github "evgeniyd/Nuke-AnimatedImage-Plugin" "Swift_2_3"
