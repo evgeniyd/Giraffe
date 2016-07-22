@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Giraffe-iOS
+
+  Created by Evgen Dubinin on 7/9/16.
+  Copyright © 2016 Yevhen Dubinin. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "GIraFfe";

@@ -112,6 +112,7 @@
 		30D6EE841D411F3E00356747 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = ../Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
 		30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NukeAnimatedImagePlugin.framework; path = ../Carthage/Build/iOS/NukeAnimatedImagePlugin.framework; sourceTree = "<group>"; };
 		30FC78641D4257DC00D5DE5E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = ../Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
+		30FC78661D425AD300D5DE5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,6 +535,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				30305A401D3052F60059919F /* Base */,
+				30FC78661D425AD300D5DE5E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
