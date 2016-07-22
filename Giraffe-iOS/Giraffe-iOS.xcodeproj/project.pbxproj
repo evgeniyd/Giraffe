@@ -39,6 +39,7 @@
 		30CA4C2F1D302AC000A36F69 /* UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA4C2E1D302AC000A36F69 /* UIColor+HEX.swift */; };
 		30D6EE861D411F3E00356747 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE841D411F3E00356747 /* Nuke.framework */; };
 		30D6EE871D411F3E00356747 /* NukeAnimatedImagePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */; };
+		30FC78651D4257DC00D5DE5E /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FC78641D4257DC00D5DE5E /* Unbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		30CA4C2E1D302AC000A36F69 /* UIColor+HEX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HEX.swift"; sourceTree = "<group>"; };
 		30D6EE841D411F3E00356747 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = ../Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
 		30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NukeAnimatedImagePlugin.framework; path = ../Carthage/Build/iOS/NukeAnimatedImagePlugin.framework; sourceTree = "<group>"; };
+		30FC78641D4257DC00D5DE5E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = ../Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30FC78651D4257DC00D5DE5E /* Unbox.framework in Frameworks */,
 				3089E8C91D2DA88700726903 /* GiraffeKit.framework in Frameworks */,
 				30061C021D29D3A600ABEF7F /* FLAnimatedImage.framework in Frameworks */,
 				30D6EE861D411F3E00356747 /* Nuke.framework in Frameworks */,
@@ -201,6 +204,7 @@
 		30061BF21D29C71C00ABEF7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30FC78641D4257DC00D5DE5E /* Unbox.framework */,
 				30D6EE841D411F3E00356747 /* Nuke.framework */,
 				30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */,
 				3089E8C81D2DA88700726903 /* GiraffeKit.framework */,
@@ -443,6 +447,7 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/NukeAnimatedImagePlugin.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/Nuke.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/Unbox.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
