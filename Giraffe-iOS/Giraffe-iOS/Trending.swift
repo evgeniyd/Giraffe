@@ -13,7 +13,9 @@ import GiraffeKit
 // MARK: - Model Protocol -
 
 protocol TrendingModelType {
-    func whatsTrending() -> SignalProducer<Response?, GiraffeError>
+    func startPage() -> SignalProducer<Response?, GiraffeError>
+    // TODO:
+//    func nextPage() -> SignalProducer<Response?, GiraffeError>
 }
 
 // MARK: - Model Implementation -
@@ -25,7 +27,7 @@ final class Trending: TrendingModelType {
         self.service = s
     }
     
-    func whatsTrending() -> SignalProducer<Response?, GiraffeError> {
+    func startPage() -> SignalProducer<Response?, GiraffeError> {
         let session = NSURLSession.sharedSession()
         let request = self.service.request()
         let retryAttempts = 3
@@ -40,14 +42,14 @@ final class Trending: TrendingModelType {
                 return SignalProducer(error: networkError)
             }
             .map { data, URLResponse in
-                
+                // TODO: #1 make this reactive, so
                 switch Response.decodedFrom(data: data, response: URLResponse) {
-                case .Error(let decodeError):
+                case .Failure(let decodeError):
                     print("Parsing error occurred. Error was:\n\(decodeError)")
-                    // TODO:
+                    // TODO: #2 we can do the following:
 //                    return SignalProducer(error: GiraffeError.ParserError)
                     return nil
-                case .Value(let result):
+                case .Success(let result):
                     return result
                 }
         }

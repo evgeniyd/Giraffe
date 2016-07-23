@@ -72,7 +72,7 @@
         <scene sceneID="FQd-fe-PgH">
             <objects>
                 <collectionViewController id="FjY-2p-C5b" customClass="AnimatedImageCollectionViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="TDx-17-wWf">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="TDx-17-wWf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,23 +90,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="186" height="186"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fWs-Y4-qOc" userLabel="Static Image View"/>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAU-DG-Ete" userLabel="Animated Image View" customClass="FLAnimatedImageView"/>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="UAU-DG-Ete" firstAttribute="top" secondItem="n5p-Pg-VVD" secondAttribute="top" id="0Ve-r0-zKe"/>
-                                    <constraint firstAttribute="trailing" secondItem="fWs-Y4-qOc" secondAttribute="trailing" id="JFN-YV-JDX"/>
                                     <constraint firstItem="UAU-DG-Ete" firstAttribute="leading" secondItem="n5p-Pg-VVD" secondAttribute="leading" id="Myy-nc-BpA"/>
                                     <constraint firstAttribute="bottom" secondItem="UAU-DG-Ete" secondAttribute="bottom" id="OXk-RX-xbW"/>
-                                    <constraint firstItem="fWs-Y4-qOc" firstAttribute="top" secondItem="n5p-Pg-VVD" secondAttribute="top" id="YUr-DF-1ML"/>
-                                    <constraint firstAttribute="bottom" secondItem="fWs-Y4-qOc" secondAttribute="bottom" id="e7e-bU-qHa"/>
                                     <constraint firstAttribute="trailing" secondItem="UAU-DG-Ete" secondAttribute="trailing" id="e8z-9Z-Mcw"/>
-                                    <constraint firstItem="fWs-Y4-qOc" firstAttribute="leading" secondItem="n5p-Pg-VVD" secondAttribute="leading" id="s1g-Zy-zoI"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="animatedImageView" destination="UAU-DG-Ete" id="pTt-0r-y5H"/>
-                                    <outlet property="staticImageView" destination="fWs-Y4-qOc" id="Pb5-Tp-5B2"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

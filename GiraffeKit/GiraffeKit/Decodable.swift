@@ -9,8 +9,8 @@
 import Foundation
 
 public enum DecodingResult<ValueType,ErrorType> {
-    case Error(ErrorType)
-    case Value(ValueType)
+    case Success(ValueType)
+    case Failure(ErrorType)
 }
 
 public protocol Decodable {

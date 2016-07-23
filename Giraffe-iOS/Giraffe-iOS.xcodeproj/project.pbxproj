@@ -40,6 +40,7 @@
 		30D6EE861D411F3E00356747 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE841D411F3E00356747 /* Nuke.framework */; };
 		30D6EE871D411F3E00356747 /* NukeAnimatedImagePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */; };
 		30FC78651D4257DC00D5DE5E /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FC78641D4257DC00D5DE5E /* Unbox.framework */; };
+		30FC78691D425E4F00D5DE5E /* Image+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC78681D425E4F00D5DE5E /* Image+RAC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NukeAnimatedImagePlugin.framework; path = ../Carthage/Build/iOS/NukeAnimatedImagePlugin.framework; sourceTree = "<group>"; };
 		30FC78641D4257DC00D5DE5E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = ../Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 		30FC78661D425AD300D5DE5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		30FC78681D425E4F00D5DE5E /* Image+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+RAC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				30D7D4A41D3A97D00063F684 /* ViewModel */,
 				30D7D4A21D3A97BF0063F684 /* View */,
 				30B3B7691D3A9F460077BCAA /* Utils */,
+				30FC78671D425E1400D5DE5E /* Reactive Extensions */,
 				30CA4C2B1D30298600A36F69 /* Framework Extensions */,
 				30061BF61D29CF9500ABEF7F /* SampleGIFs */,
 				3089E8C71D2DA69800726903 /* Supporting Files */,
@@ -293,6 +296,14 @@
 				30A0C2261D3C32B300627ECB /* AnimatedImageViewModel.swift */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		30FC78671D425E1400D5DE5E /* Reactive Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30FC78681D425E4F00D5DE5E /* Image+RAC.swift */,
+			);
+			name = "Reactive Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +480,7 @@
 				30B3B7711D3AA17E0077BCAA /* ViewModelType.swift in Sources */,
 				30CA4C2F1D302AC000A36F69 /* UIColor+HEX.swift in Sources */,
 				30B3B7651D3A9D960077BCAA /* Trending.swift in Sources */,
+				30FC78691D425E4F00D5DE5E /* Image+RAC.swift in Sources */,
 				30B3B76F1D3AA16C0077BCAA /* ViewType.swift in Sources */,
 				30B3B7731D3AA1C90077BCAA /* UIViewController+ViewType.swift in Sources */,
 				30305A3C1D3041B00059919F /* UIFont+Giraffe.swift in Sources */,

@@ -61,7 +61,7 @@ struct TrendingViewModel: ViewModelType {
                 return GiraffeError.UnknownError
             }
             .flatMap(.Latest) { _ in
-                return self.model.whatsTrending()
+                return self.model.startPage()
             }
             .on(failed: { _ in
                 self.message.value = self.fetchTrendingErrorMsg

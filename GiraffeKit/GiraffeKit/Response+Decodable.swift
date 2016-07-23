@@ -21,15 +21,15 @@ extension Response: Decodable {
     public static func decodedFrom(data data: NSData, response URLResponse: NSURLResponse) -> DecodingResult<Response, GiraffeError> {
         do {
             let response: Response = try Unbox(data)
-            return .Value(response)
+            return .Success(response)
         } catch let unboxError as UnboxError {
             print("Unbox error during decoding: \(unboxError)")
             print(unboxError.description)
             // TODO: throw UnboxError
-            return .Error(GiraffeError.ParserError)
+            return .Failure(GiraffeError.ParserError)
         } catch let unknownError {
             print("Unknown error during decoding: \(unknownError)")
-            return .Error(GiraffeError.ParserError)
+            return .Failure(GiraffeError.ParserError)
         }
     }
 }

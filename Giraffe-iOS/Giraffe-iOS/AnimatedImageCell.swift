@@ -16,12 +16,14 @@ class AnimatedImageCell: UICollectionViewCell {
     // MARK: - Outlets -
     
     @IBOutlet weak var animatedImageView: FLAnimatedImageView!
-    @IBOutlet weak var staticImageView: UIImageView!
+    
+    // MARK: - prepareForReuse Signal -
     
     let rac_prepareForReuse_Signal: Signal<Void, NoError>
     let rac_prepareForReuse_Observer:Observer<Void, NoError>
     
     let isViewDidAppear = MutableProperty<Bool>(false)
+    
     // MARK: - Initialization -
     
     override init(frame: CGRect) {
@@ -34,7 +36,6 @@ class AnimatedImageCell: UICollectionViewCell {
         rac_prepareForReuse_Observer = observer
         
         super.init(coder: aDecoder)
-        self.contentView.backgroundColor = UIColor.giraffeOrange()
     }
     
     // MARK: - ViewType Protocol -
@@ -55,7 +56,8 @@ class AnimatedImageCell: UICollectionViewCell {
         
         self.viewModel!.isActive <~ self.isViewDidAppear
         
-        self.staticImageView.rac_image <~ self.viewModel!.staticImage.producer.observeOn(UIScheduler())//.takeUntil(self.rac_prepareForReuse_Signal)
+        // do we need .takeUntil(self.rac_prepareForReuse_Signal) ?
+        self.animatedImageView.rac_animatedImage <~ self.viewModel!.image.producer.observeOn(UIScheduler())
         
         self.isViewDidAppear.value = true
         
@@ -64,20 +66,3 @@ class AnimatedImageCell: UICollectionViewCell {
         }
     }
 }
-
-
-// local
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-//            let pathForFile = NSBundle.mainBundle().pathForResource("01", ofType: "gif")
-//            let url = NSURL.fileURLWithPath(pathForFile!)
-//            let data = NSData(contentsOfURL: url)
-//            let imageLocal = FLAnimatedImage.init(animatedGIFData: data)
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.animatedImageView.animatedImage = imageLocal
-//            })
-//        }
-
-// remote
-//        let image = FLAnimatedImage.init(animatedGIFData: NSData(contentsOfURL: NSURL(string: "https://media1.giphy.com/media/l46CpUy7GwBmjP8QM/200.gif")!))
-//        self.animatedImageView?.animatedImage = image
-

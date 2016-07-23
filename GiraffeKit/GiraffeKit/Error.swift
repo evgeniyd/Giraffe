@@ -17,6 +17,7 @@ public enum GiraffeError: ErrorType, CustomStringConvertible {
     case UnknownError
     case NetworkError
     case ParserError
+    case LoadImageError(String)
     
     public var nsError: NSError {
         // TODO: add custom error code
@@ -31,6 +32,8 @@ public enum GiraffeError: ErrorType, CustomStringConvertible {
             return "Network Error"
         case ParserError:
             return "Parser Error"
+        case LoadImageError(let localizedDescription):
+            return "Cannot load image. \(localizedDescription)"
         default:
             return "Unknown Error"
         }
