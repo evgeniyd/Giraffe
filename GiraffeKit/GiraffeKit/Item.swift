@@ -42,7 +42,7 @@ public enum Rating: String {
     case pg
     case pg13 = "pg-13"
     case r
-    case unspecified
+    case unspecified = ""
 }
 
 public struct Image {

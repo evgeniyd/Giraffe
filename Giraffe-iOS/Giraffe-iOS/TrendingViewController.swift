@@ -11,16 +11,15 @@ import ReactiveCocoa
 import Result
 import GiraffeKit
 
-final class TrendingViewController: UIViewController, ViewType {
+final class TrendingViewController: BaseViewController, ViewType {
+    private let searchResultSegueIdentiier = "searchResultVC"
     
-    enum TrendingVCSegue: SegueIdentifier {
-        case embedCollectionVC
-    }
+    let viewModel: TrendingViewModel?                                       = TrendingViewModel(model: Trending(service: TrendingService()))
     
-    let viewModel: TrendingViewModel? = TrendingViewModel(model: Trending(service: TrendingService()))
-    let searchBar                               = UISearchBar.giraffeSearchBar()
-    var searchBarButtonItem: UIBarButtonItem?   = nil
-    var collectionViewController: AnimatedImageCollectionViewController!
+    let searchBar                                                           = UISearchBar.giraffeSearchBar()
+    var searchBarButtonItem: UIBarButtonItem?                               = nil
+    var animationPlaybackControl: UIBarButtonItem?                          = nil
+
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -30,7 +29,15 @@ final class TrendingViewController: UIViewController, ViewType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup Search button
         searchBarButtonItem = navigationItem.rightBarButtonItem
+        searchBarButtonItem?.target = self
+        searchBarButtonItem?.action = #selector(didPressSearchButton)
+        
+        animationPlaybackControl = navigationItem.leftBarButtonItem
+        animationPlaybackControl?.target = self
+        animationPlaybackControl?.action = #selector(didChangeAnimationPlayback)
+        animationPlaybackControl?.enabled = false // disabled for now
         
         // Setup RAC bindings.
         setupBindings()
@@ -43,20 +50,46 @@ final class TrendingViewController: UIViewController, ViewType {
         self.setupViewBindings()
         
         // Setup custom bindings.
-        _ = viewModel!.headline.producer.observeOn(UIScheduler()).startWithNext { next in
-            self.navigationItem.title = next
+        navigationItem.rac_title <~ viewModel!.headline.producer.observeOn(UIScheduler())
+        messageLabel.rac_text <~ viewModel!.message.producer.observeOn(UIScheduler())
+        containerView.rac_hidden <~ viewModel!.shouldHideItemsView.producer.observeOn(UIScheduler())
+        collectionViewController.rac_items <~ viewModel!.items.producer.observeOn(UIScheduler())
+    
+        // subscribing for search text signal
+        self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
+            .map { object in
+            guard let tuple = object as? RACTuple else {
+                return GiraffeError.UnknownError.nsError
+            }
+            guard let string = tuple.second as? String else {
+                return GiraffeError.UnknownError.nsError
+            }
+            return string
         }
-        messageLabel.rac_text <~ self.viewModel!.message.producer.observeOn(UIScheduler())
-        containerView.rac_hidden <~ self.viewModel!.shouldHideTrending.producer.observeOn(UIScheduler())
-        collectionViewController.rac_items <~ self.viewModel!.items.producer.observeOn(UIScheduler())
+            .subscribeNext { object in
+            if let searchString = object as? String {
+                self.viewModel!.searchText.value = searchString
+            }
+        }
+        searchBar.delegate = self
+        
     }
 
+    @objc func didChangeAnimationPlayback() {
+        // TODO: start/stop animation
+    }
+    
     // MARK: - Search Bar Presentation -
+    
+    @objc func didPressSearchButton() {
+        showSearchBar()
+    }
     
     private func showSearchBar() {
         searchBar.alpha = 0
         navigationItem.titleView = searchBar
         navigationItem.setRightBarButtonItem(nil, animated: false)
+        navigationItem.setLeftBarButtonItem(nil, animated: false)
         UIView.animateWithDuration(0.5, animations: {
             self.searchBar.alpha = 1
             }, completion: { finished in
@@ -66,6 +99,7 @@ final class TrendingViewController: UIViewController, ViewType {
     
     private func hideSearchBar() {
         navigationItem.setRightBarButtonItem(searchBarButtonItem, animated: true)
+        navigationItem.setLeftBarButtonItem(animationPlaybackControl, animated: true)
         UIView.animateWithDuration(0.3, animations: {
             self.navigationItem.title = self.viewModel!.headline.value
             self.navigationItem.titleView = nil
@@ -77,32 +111,27 @@ final class TrendingViewController: UIViewController, ViewType {
     // MARK: - Storyboard -
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // TODO: make more Swift-ty
-        if (segue.identifier == TrendingVCSegue.embedCollectionVC.rawValue) {
-            self.collectionViewController = segue.destinationViewController as! AnimatedImageCollectionViewController
+        if (segue.identifier == searchResultSegueIdentiier) {
+            guard let searchResultVC = segue.destinationViewController as? SearchResultViewController else {
+                return
+            }
+            searchResultVC.bindWith(viewModel: viewModel!.searchResultViewModel.value!)
         }
-    }
-    
-    // MARK: - Status Bar -
-
-    override func preferredStatusBarStyle() -> UIStatusBarStyle { return .LightContent }
-    override func prefersStatusBarHidden() -> Bool { return false }
-    
-    // MARK: - Styling -
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        applyCustomAppearance(DefaultViewControllerAppearance())
-    }
-    
-    // MARK: - Memmory Management -
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        else {
+            super.prepareForSegue(segue, sender: sender)
+        }
     }
 }
 
-extension TrendingViewController: ViewControllerAppearanceCustomizable { }
+extension TrendingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        self.hideSearchBar()
+        self.performSegueWithIdentifier(searchResultSegueIdentiier, sender: self)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.hideSearchBar()
+    }
+}
 

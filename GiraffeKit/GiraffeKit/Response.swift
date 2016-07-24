@@ -30,6 +30,17 @@ public struct Response {
 }
 
 ////////////////////////////////////
+// MARK: - Convenience methods -
+////////////////////////////////////
+
+extension Response {
+    public var zeroItems: Bool {
+        get {
+            return (self.data.count == 0)
+        }
+    }
+}
+////////////////////////////////////
 // MARK: - Unboxable extension -
 ////////////////////////////////////
 

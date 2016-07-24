@@ -61,10 +61,10 @@ extension UISearchBar {
     class func giraffeSearchBar() -> UISearchBar {
         let searchBar = UISearchBar()
         searchBar.showsCancelButton = true;
-//        self.searchBar.setImage(UIImage(named: "ico-cancel"), forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Normal)
-//        self.searchBar.setImage(UIImage(named: "ico-cancel"), forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Highlighted)
-//        self.searchBar.setImage(UIImage(named: "ico-cancel"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
-//        self.searchBar.setImage(UIImage(named: "ico-cancel"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Highlighted)
+        searchBar.setImage(UIImage(named: "cancelsearch-normal"), forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Normal)
+        searchBar.setImage(UIImage(named: "cancelsearch-highlighted"), forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Highlighted)
+        searchBar.setImage(UIImage(named: "searchbar"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
+        searchBar.setImage(UIImage(named: "searchbar"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Highlighted)
         return searchBar
     }
 }

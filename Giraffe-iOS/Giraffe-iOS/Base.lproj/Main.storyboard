@@ -31,7 +31,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HsK-JH-GvV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="78n-O2-HQz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xW8-kC-yoT">
@@ -41,7 +41,7 @@
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some user-facing message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5f0-Gg-2NB" userLabel="Message Label">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -55,25 +55,68 @@
                             <constraint firstAttribute="trailing" secondItem="xW8-kC-yoT" secondAttribute="trailing" id="u9e-0m-UxR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rRO-pZ-Ts0">
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="ecJ-Ie-qMb"/>
+                    <navigationItem key="navigationItem" id="XxA-C5-AOM">
+                        <barButtonItem key="leftBarButtonItem" image="playpause" id="b41-IO-PMS"/>
+                        <barButtonItem key="rightBarButtonItem" image="mainsearch" id="0Kn-Kz-qga"/>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="xW8-kC-yoT" id="k6E-QA-lZw"/>
                         <outlet property="messageLabel" destination="5f0-Gg-2NB" id="UPs-hE-3H4"/>
-                        <outlet property="searchButton" destination="ecJ-Ie-qMb" id="Bqm-7e-psK"/>
+                        <segue destination="M6j-Ow-nMn" kind="show" identifier="searchResultVC" id="E38-1v-Wco"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3my-Xn-gse" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="183.19999999999999" y="-223.53823088455775"/>
         </scene>
+        <!--Search Result View Controller-->
+        <scene sceneID="PhI-JG-xa5">
+            <objects>
+                <viewController id="M6j-Ow-nMn" customClass="SearchResultViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aiI-HI-BW8"/>
+                        <viewControllerLayoutGuide type="bottom" id="hWe-Fo-CkG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M0Z-xd-nMl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RN0-CN-hSk">
+                                <connections>
+                                    <segue destination="FjY-2p-C5b" kind="embed" identifier="embedCollectionVC" id="PvZ-Gw-unh"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some user-facing message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="to6-GI-F9K" userLabel="Message Label">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RN0-CN-hSk" firstAttribute="top" secondItem="aiI-HI-BW8" secondAttribute="bottom" id="0tD-7C-s0z"/>
+                            <constraint firstAttribute="trailing" secondItem="RN0-CN-hSk" secondAttribute="trailing" id="65x-z5-slm"/>
+                            <constraint firstItem="to6-GI-F9K" firstAttribute="centerX" secondItem="M0Z-xd-nMl" secondAttribute="centerX" id="XYT-Bx-KJX"/>
+                            <constraint firstItem="hWe-Fo-CkG" firstAttribute="top" secondItem="RN0-CN-hSk" secondAttribute="bottom" id="a8D-6s-MGz"/>
+                            <constraint firstItem="RN0-CN-hSk" firstAttribute="leading" secondItem="M0Z-xd-nMl" secondAttribute="leading" id="e35-qA-sRW"/>
+                            <constraint firstItem="to6-GI-F9K" firstAttribute="centerY" secondItem="M0Z-xd-nMl" secondAttribute="centerY" id="uVz-2t-vaq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="RN0-CN-hSk" id="SLt-Sq-e5W"/>
+                        <outlet property="messageLabel" destination="to6-GI-F9K" id="ldS-wj-dJW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZ9-af-IIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="183" y="502"/>
+        </scene>
         <!--Animated Image Collection View Controller-->
         <scene sceneID="FQd-fe-PgH">
             <objects>
                 <collectionViewController id="FjY-2p-C5b" customClass="AnimatedImageCollectionViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="TDx-17-wWf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="3g0-O4-na3">
@@ -112,7 +155,14 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3b9-mL-k2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="-224"/>
+            <point key="canvasLocation" x="970" y="-202"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mainsearch" width="17" height="17"/>
+        <image name="playpause" width="23" height="15"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DSz-LG-cTp"/>
+    </inferredMetricsTieBreakers>
 </document>

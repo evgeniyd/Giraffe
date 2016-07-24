@@ -23,6 +23,7 @@
 		30305A3C1D3041B00059919F /* UIFont+Giraffe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30305A3B1D3041B00059919F /* UIFont+Giraffe.swift */; };
 		30305A3F1D3052F60059919F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30305A411D3052F60059919F /* InfoPlist.strings */; };
 		30305A431D3053940059919F /* AnimatedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30305A421D3053940059919F /* AnimatedImageCell.swift */; };
+		306B61E41D4576100001EDB2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306B61E31D4576100001EDB2 /* BaseViewController.swift */; };
 		3089E8C91D2DA88700726903 /* GiraffeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3089E8C81D2DA88700726903 /* GiraffeKit.framework */; };
 		3089E8CA1D2DA88700726903 /* GiraffeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3089E8C81D2DA88700726903 /* GiraffeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		30A0C2271D3C32B300627ECB /* AnimatedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0C2261D3C32B300627ECB /* AnimatedImageViewModel.swift */; };
@@ -37,6 +38,9 @@
 		30B3B7751D3AC0F70077BCAA /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B3B7741D3AC0F70077BCAA /* UIKitExtensions.swift */; };
 		30CA4C2D1D302A0100A36F69 /* UIColor+Giraffe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA4C2C1D302A0100A36F69 /* UIColor+Giraffe.swift */; };
 		30CA4C2F1D302AC000A36F69 /* UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA4C2E1D302AC000A36F69 /* UIColor+HEX.swift */; };
+		30CA50D71D45068B0030E566 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA50D61D45068B0030E566 /* SearchResultViewController.swift */; };
+		30CA50D91D450C580030E566 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA50D81D450C580030E566 /* SearchResult.swift */; };
+		30CA50DB1D4510CA0030E566 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA50DA1D4510CA0030E566 /* SearchResultViewModel.swift */; };
 		30D6EE861D411F3E00356747 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE841D411F3E00356747 /* Nuke.framework */; };
 		30D6EE871D411F3E00356747 /* NukeAnimatedImagePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */; };
 		30FC78651D4257DC00D5DE5E /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FC78641D4257DC00D5DE5E /* Unbox.framework */; };
@@ -97,6 +101,7 @@
 		30305A3B1D3041B00059919F /* UIFont+Giraffe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Giraffe.swift"; sourceTree = "<group>"; };
 		30305A401D3052F60059919F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30305A421D3053940059919F /* AnimatedImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageCell.swift; sourceTree = "<group>"; };
+		306B61E31D4576100001EDB2 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3089E8C81D2DA88700726903 /* GiraffeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GiraffeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A0C2261D3C32B300627ECB /* AnimatedImageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageViewModel.swift; sourceTree = "<group>"; };
 		30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageCollectionViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +115,9 @@
 		30B3B7741D3AC0F70077BCAA /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		30CA4C2C1D302A0100A36F69 /* UIColor+Giraffe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Giraffe.swift"; sourceTree = "<group>"; };
 		30CA4C2E1D302AC000A36F69 /* UIColor+HEX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HEX.swift"; sourceTree = "<group>"; };
+		30CA50D61D45068B0030E566 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		30CA50D81D450C580030E566 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		30CA50DA1D4510CA0030E566 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		30D6EE841D411F3E00356747 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = ../Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
 		30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NukeAnimatedImagePlugin.framework; path = ../Carthage/Build/iOS/NukeAnimatedImagePlugin.framework; sourceTree = "<group>"; };
 		30FC78641D4257DC00D5DE5E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = ../Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
@@ -274,9 +282,11 @@
 		30D7D4A21D3A97BF0063F684 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				306B61E31D4576100001EDB2 /* BaseViewController.swift */,
 				30061B8A1D29209800ABEF7F /* TrendingViewController.swift */,
 				30305A421D3053940059919F /* AnimatedImageCell.swift */,
 				30A3B90A1D2F893B00ADEF41 /* AnimatedImageCollectionViewController.swift */,
+				30CA50D61D45068B0030E566 /* SearchResultViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -285,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				30B3B7641D3A9D960077BCAA /* Trending.swift */,
+				30CA50D81D450C580030E566 /* SearchResult.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -294,6 +305,7 @@
 			children = (
 				30B3B7661D3A9F140077BCAA /* TrendingViewModel.swift */,
 				30A0C2261D3C32B300627ECB /* AnimatedImageViewModel.swift */,
+				30CA50DA1D4510CA0030E566 /* SearchResultViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -478,13 +490,17 @@
 				30305A431D3053940059919F /* AnimatedImageCell.swift in Sources */,
 				30061B8B1D29209800ABEF7F /* TrendingViewController.swift in Sources */,
 				30B3B7711D3AA17E0077BCAA /* ViewModelType.swift in Sources */,
+				30CA50DB1D4510CA0030E566 /* SearchResultViewModel.swift in Sources */,
 				30CA4C2F1D302AC000A36F69 /* UIColor+HEX.swift in Sources */,
+				306B61E41D4576100001EDB2 /* BaseViewController.swift in Sources */,
 				30B3B7651D3A9D960077BCAA /* Trending.swift in Sources */,
 				30FC78691D425E4F00D5DE5E /* Image+RAC.swift in Sources */,
 				30B3B76F1D3AA16C0077BCAA /* ViewType.swift in Sources */,
 				30B3B7731D3AA1C90077BCAA /* UIViewController+ViewType.swift in Sources */,
 				30305A3C1D3041B00059919F /* UIFont+Giraffe.swift in Sources */,
+				30CA50D91D450C580030E566 /* SearchResult.swift in Sources */,
 				30CA4C2D1D302A0100A36F69 /* UIColor+Giraffe.swift in Sources */,
+				30CA50D71D45068B0030E566 /* SearchResultViewController.swift in Sources */,
 				30A0C2271D3C32B300627ECB /* AnimatedImageViewModel.swift in Sources */,
 				30A3B90D1D2F8A3A00ADEF41 /* CommonUserInterface.swift in Sources */,
 				30B3B7671D3A9F140077BCAA /* TrendingViewModel.swift in Sources */,

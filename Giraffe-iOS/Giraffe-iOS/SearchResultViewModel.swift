@@ -1,35 +1,19 @@
 //
-//  TrendingViewModel.swift
+//  SearchResultViewModel.swift
 //  Giraffe-iOS
 //
-//  Created by Evgen Dubinin on 7/16/16.
+//  Created by Evgen Dubinin on 7/24/16.
 //  Copyright © 2016 Yevhen Dubinin. All rights reserved.
 //
 
 import Foundation
 import ReactiveCocoa
+import Result
 import GiraffeKit
 
-
-// TODO: I'd be happy to create something like this:
-//
-// protocol TrendingViewModelType: ViewModelType { 
-//     /* interface used by a view */
-// }
-//
-// However, sadly, Swift cannot infer 
-// 'associatedtype VM: ViewModelType' from ViewType protocol
-// when TrendingViewModelType type is specified for 
-// 'var viewModel: TrendingViewModelType?' requirement
-// We are forced to use concrete type when conforming to ViewType protocol
-// More Info : http://stackoverflow.com/questions/37360114/unable-to-use-protocol-as-associatedtype-in-another-protocol-in-swift/37360351#37360351
-
-
-// MARK: - ViewModel Protocol -
-
-struct TrendingViewModel: ViewModelType {
-    private let model: TrendingModelType
-    private let response    = MutableProperty<Response?>(nil)
+struct SearchResultViewModel: ViewModelType {
+    private let model: SearchResult
+    private let response                = MutableProperty<Response?>(nil)
     
     private let fetchErrorMsg           = "Something went wrong while getting trending"
     private let blankMsg                = ""
@@ -37,25 +21,25 @@ struct TrendingViewModel: ViewModelType {
     
     // MARK: - ViewModelType -
     
-    let isActive                    = MutableProperty<Bool>(false)
+    let isActive                        = MutableProperty<Bool>(false)
     
-    // MARK: - TrendingViewModelType -
+    // MARK: - ViewModel Public Properties -
     
-    let headline                    = ConstantProperty<String?>("Trending")
-    let message                     = MutableProperty("")
+    let headline                    = MutableProperty<String?>(nil)
     let items                       = MutableProperty<[Item]>([])
+    let message                     = MutableProperty("")
     let shouldHideItemsView         = MutableProperty<Bool>(true)
-    let searchText                  = MutableProperty<String>("")
-    let searchResultViewModel       = MutableProperty<SearchResultViewModel?>(nil)
     
     // MARK: - Initialization -
     
-    init(model: TrendingModelType) {
+    init(model: SearchResult) {
         self.model = model
         
         // Setup RAC bindings.
         self.setupBindings()
     }
+    
+    // MARK: - RAC -
     
     func setupBindings() {
         
@@ -89,17 +73,6 @@ struct TrendingViewModel: ViewModelType {
         self.shouldHideItemsView <~ self.items.producer.map { items in
             items.count == 0
         }
-        
-        self.searchText.producer
-            .startWithResult { result in
-                if let query: String = result.value {
-                    let service = SearchService(query: query)
-                    let searchModel = SearchResult(service: service)
-                    let searchResultViewModel = SearchResultViewModel(model: searchModel)
-                    searchResultViewModel.headline.value = query
-                    self.searchResultViewModel.value = searchResultViewModel
-                }
-        }
     }
-    
 }
+

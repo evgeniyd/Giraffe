@@ -14,6 +14,7 @@ struct AssociationKey {
     static var alpha: UInt8 = 2
     static var text: UInt8 = 3
     static var image: UInt8 = 4
+    static var title: UInt8 = 5
 }
 
 // lazily creates a gettable associated property via the given factory
@@ -77,5 +78,11 @@ extension UITextField {
     
     func changed() {
         rac_text.value = self.text!
+    }
+}
+
+extension UINavigationItem {
+    public var rac_title: MutableProperty<String?> {
+        return lazyMutableProperty(self, key: &AssociationKey.title, setter: { self.title = $0 }, getter: { self.title })
     }
 }
