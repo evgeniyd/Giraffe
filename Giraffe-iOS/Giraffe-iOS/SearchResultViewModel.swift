@@ -12,8 +12,14 @@ import Result
 import GiraffeKit
 
 struct SearchResultViewModel: ViewModelType {
+    
+    private struct Constants {
+        static let RetryAttempts: Int = Int.max
+    }
+    
     private let model: SearchResult
     private let response                = MutableProperty<Response?>(nil)
+    private let items                   = MutableProperty<[Item]>([])
     
     private let fetchErrorMsg           = "Something went wrong while getting trending"
     private let blankMsg                = ""
@@ -22,13 +28,13 @@ struct SearchResultViewModel: ViewModelType {
     // MARK: - ViewModelType -
     
     let isActive                        = MutableProperty<Bool>(false)
+    let message                         = MutableProperty<String>("")
+    let shouldHideItemsView             = MutableProperty<Bool>(true)
+    let itemViewModels                  = MutableProperty<[AnimatedImageViewModel]>([])
     
     // MARK: - ViewModel Public Properties -
     
     let headline                    = MutableProperty<String?>(nil)
-    let items                       = MutableProperty<[Item]>([])
-    let message                     = MutableProperty("")
-    let shouldHideItemsView         = MutableProperty<Bool>(true)
     
     // MARK: - Initialization -
     
@@ -57,7 +63,7 @@ struct SearchResultViewModel: ViewModelType {
             // HACK: We'd like to receive an error and update the UI, but it well known
             // that SignalProducer stops upon failure, thus we have to retry it.
             // For now, retry as much as we can (Int.max times). There has to be more correct way to do this
-            .retry(Int.max)
+            .retry(Constants.RetryAttempts)
             .startWithResult { result in
                 self.response.value = result.value!
                 self.message.value = self.response.value!.zeroItems ? self.emptyResponseMsg : self.blankMsg
@@ -67,6 +73,10 @@ struct SearchResultViewModel: ViewModelType {
             .ignoreNil()
             .map { response in
                 response.data
+        }
+        
+        self.itemViewModels <~ self.items.producer.map { items in
+            items.map{ AnimatedImageViewModel(model: $0) }
         }
         
         // Make sure, we're only showing the trending view if there are actually some results

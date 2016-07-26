@@ -13,7 +13,7 @@ extension ViewType where Self: UIViewController {
     func setupViewBindings() {
         let active = NSNotificationCenter.defaultCenter().rac_notifications(UIApplicationDidBecomeActiveNotification)
             .map { _ in
-                return true
+                true
         }
         
         let inactive = NSNotificationCenter.defaultCenter().rac_notifications(UIApplicationWillResignActiveNotification)

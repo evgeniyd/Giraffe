@@ -22,8 +22,6 @@ class AnimatedImageCell: UICollectionViewCell {
     let rac_prepareForReuse_Signal: Signal<Void, NoError>
     let rac_prepareForReuse_Observer:Observer<Void, NoError>
     
-    let isViewDidAppear = MutableProperty<Bool>(false)
-    
     // MARK: - Initialization -
     
     override init(frame: CGRect) {
@@ -34,8 +32,8 @@ class AnimatedImageCell: UICollectionViewCell {
         let (signal, observer) = Signal<Void, NoError>.pipe()
         rac_prepareForReuse_Signal = signal
         rac_prepareForReuse_Observer = observer
-        
         super.init(coder: aDecoder)
+        contentView.backgroundColor = .giraffeLightGray()
     }
     
     // MARK: - ViewType Protocol -
@@ -54,15 +52,19 @@ class AnimatedImageCell: UICollectionViewCell {
     func bind(viewModel vm: AnimatedImageViewModel) {
         self.viewModel = vm
         
-        self.viewModel!.isActive <~ self.isViewDidAppear
+        self.animatedImageView.rac_animatedImage <~ self.viewModel!.image.producer.observeOn(UIScheduler()).takeUntil(self.rac_prepareForReuse_Signal)
         
-        // do we need .takeUntil(self.rac_prepareForReuse_Signal) ?
-        self.animatedImageView.rac_animatedImage <~ self.viewModel!.image.producer.observeOn(UIScheduler())
+        // START loading upon binding completes
+        // FINISH loading upon prepare for reuse
+        let (activeSignal, activeObserver) = Signal<Bool, NoError>.pipe()
+        let inactiveSignal = self.rac_prepareForReuse_Signal.map { _ in false }
+        self.viewModel!.isActive <~ Signal.merge([inactiveSignal,activeSignal])
         
-        self.isViewDidAppear.value = true
+        activeObserver.sendNext(true)
         
-        self.rac_prepareForReuse_Signal.observeNext { next in
-            print("rac_prepareForReuse_Signal: \(next)")
-        }
+        // DEBUG:
+//        self.rac_prepareForReuse_Signal.observeNext { next in
+//            print("rac_prepareForReuse_Signal: \(next)")
+//        }
     }
 }

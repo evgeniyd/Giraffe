@@ -14,7 +14,7 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
     private let animatedImageCellIdentifier = "AnimatedImageCellIdentifier"
     private var flipBackgroundPatternCounter: Int = 0
     
-    let rac_items = MutableProperty<[Item]>([])
+    let rac_itemViewModels = MutableProperty<[AnimatedImageViewModel]>([])
     
     // MARK: - View Life Cycle -
     
@@ -26,72 +26,32 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
     // MARK: - Collection View Data Source -
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.rac_items.value.count
+        return self.rac_itemViewModels.value.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(animatedImageCellIdentifier, forIndexPath: indexPath)
         let animatedImageCell = cell as! AnimatedImageCell // check agains conforming to a protocol, not a concrete type
-        animatedImageCell.bind(viewModel: self.viewModelFor(indexPath))
-        flipBackgroundColorFor(cell: animatedImageCell, indexPath: indexPath)
+        animatedImageCell.bind(viewModel: self.rac_itemViewModels.value[indexPath.row])
         return animatedImageCell
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout -
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        let width = collectionView.bounds.width
+        let minSpaceForCells: CGFloat = 1.0
+        let width = collectionView.bounds.width - minSpaceForCells
         return CGSizeMake(width/2.0, width/2.0)
     }
     
     // MARK: - RAC binding -
     
     private func setupBindings() {
-        self.rac_items.producer.on (next: { _ in
-            self.collectionView!.reloadData()
-        }).start()
-    }
-    
-    // MARK: - Data Helpers -
-    
-    private func viewModelFor(indexPath: NSIndexPath) -> AnimatedImageViewModel {
-        let row = indexPath.row
-        let model = self.rac_items.value[row]
-        let viewModel = AnimatedImageViewModel(model: model)
-        return viewModel
-    }
-    
-    // MARK: - Styling -
-    
-    private func flipBackgroundColorFor(cell cell: UICollectionViewCell, indexPath: NSIndexPath) {
-        
-        // orange(1) yellow(2)
-        // yellow(3) orange(4)
-        // orange(5) yellow(6)
-        // yelllow(7) orange(8)
-        
-        var shouldFlip = false
-        
-        flipBackgroundPatternCounter += 1
-        if flipBackgroundPatternCounter > 4 {
-            flipBackgroundPatternCounter = 1
-        }
-        
-        switch flipBackgroundPatternCounter {
-        case 1, 2:
-            shouldFlip = true
-        case 3, 4:
-            shouldFlip = false
-        default:
-            shouldFlip = false
-        }
-        
-        let row = indexPath.row
-        if row % 2 == 0 {
-            cell.contentView.backgroundColor = shouldFlip ? UIColor.giraffeOrange() : UIColor.giraffeYellow()
-        }
-        else {
-            cell.contentView.backgroundColor = shouldFlip ? UIColor.giraffeYellow() : UIColor.giraffeOrange()
-        }
+        self.rac_itemViewModels.producer
+            .observeOn(UIScheduler())
+            .on (next: { _ in
+                self.collectionView!.reloadData()
+            })
+            .start()
     }
 }

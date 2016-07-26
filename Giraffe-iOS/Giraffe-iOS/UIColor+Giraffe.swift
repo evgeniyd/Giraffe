@@ -20,4 +20,8 @@ extension UIColor {
     public class func giraffeWhite() -> UIColor {
         return UIColor.whiteColor() // just in case, the black would become a new white :)
     }
+    
+    public class func giraffeLightGray() -> UIColor {
+        return UIColor(hexString: "#ededed")!
+    }
 }

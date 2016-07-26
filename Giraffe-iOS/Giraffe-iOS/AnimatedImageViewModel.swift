@@ -23,15 +23,13 @@ struct AnimatedImageViewModel {
     }
     
     private func setupBindings() {
-        let image = self.model.multiFrame()
-        
         self.isActive.producer
-            .filter { $0 }
+            .filter { $0 } // TODO: cancel work upon 'false'
             .mapError { _ in
                 return GiraffeError.UnknownError
             }
             .flatMap(.Latest) { _ in
-                return image.get()
+                return self.model.multiFrame().get()
             }
             .startWithResult { result in
                 print(result)

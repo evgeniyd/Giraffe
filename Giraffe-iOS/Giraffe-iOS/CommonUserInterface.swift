@@ -73,9 +73,9 @@ extension UISearchBar {
 
 extension UIApplication {
     func applyGlobalAppearance() {
-        UISearchBar.appearance().barTintColor = UIColor.giraffeYellow()
-        UISearchBar.appearance().tintColor = UIColor.giraffeOrange()
-        UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).tintColor = UIColor.giraffeOrange()
-        UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).backgroundColor = UIColor.giraffeWhite()
+        UISearchBar.appearance().barTintColor = .giraffeYellow()
+        UISearchBar.appearance().tintColor = .giraffeOrange()
+        UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).tintColor = .giraffeOrange()
+        UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).backgroundColor = .giraffeWhite()
     }
 }

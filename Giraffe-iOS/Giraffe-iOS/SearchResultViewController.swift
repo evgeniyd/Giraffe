@@ -27,17 +27,6 @@ final class SearchResultViewController: BaseViewController {
         setupBindings()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewModel?.isActive.value = true
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.viewModel?.isActive.value = false
-        
-    }
-    
     // MARK: - RAC -
     
     func bindWith(viewModel vm: SearchResultViewModel) {
@@ -47,9 +36,13 @@ final class SearchResultViewController: BaseViewController {
     private func setupBindings() {
         // Setup custom bindings.
         navigationItem.rac_title <~ viewModel!.headline.producer.observeOn(UIScheduler())
-        collectionViewController.rac_items <~ viewModel!.items.producer.observeOn(UIScheduler())
+        collectionViewController.rac_itemViewModels <~ viewModel!.itemViewModels.producer.observeOn(UIScheduler())
         messageLabel.rac_text <~ viewModel!.message.producer.observeOn(UIScheduler())
         containerView.rac_hidden <~ viewModel!.shouldHideItemsView.producer.observeOn(UIScheduler())
+        
+        let viewWillAppear = self.rac_signalForSelector(#selector(UIViewController.viewWillAppear(_:))).toSignalProducer().ignoreError().ignoreNil().map { _ in true }
+        let viewWillDisappear = self.rac_signalForSelector(#selector(UIViewController.viewWillDisappear(_:))).toSignalProducer().ignoreError().ignoreNil().map { _ in false }
+        self.viewModel!.isActive <~ merge([viewWillAppear, viewWillDisappear])
     }
 }
 

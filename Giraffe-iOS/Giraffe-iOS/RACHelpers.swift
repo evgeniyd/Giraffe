@@ -20,3 +20,17 @@ extension SignalProducer where Value: OptionalType {
 public func merge<T, E>(signals: [SignalProducer<T, E>]) -> SignalProducer<T, E> {
     return SignalProducer<SignalProducer<T, E>, E>(values: signals).flatten(.Merge)
 }
+
+
+extension Signal {
+    public static func merge<S: SequenceType where S.Generator.Element == Signal<Value, Error>>(signals: S) -> Signal<Value, Error> {
+        let producer = SignalProducer<Signal<Value, Error>, Error>(values: signals)
+        var result: Signal<Value, Error>!
+        
+        producer.startWithSignal { (signal, _) in
+            result = signal.flatten(.Merge)
+        }
+        
+        return result
+    }
+}

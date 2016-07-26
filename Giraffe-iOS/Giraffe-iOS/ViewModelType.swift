@@ -8,7 +8,11 @@
 
 import Foundation
 import ReactiveCocoa
+import GiraffeKit
 
 protocol ViewModelType {
     var isActive: MutableProperty<Bool> { get }
+    var message: MutableProperty<String> { get }
+    var shouldHideItemsView: MutableProperty<Bool> { get }
+    var itemViewModels: MutableProperty<[AnimatedImageViewModel]> { get }
 }

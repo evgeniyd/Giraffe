@@ -28,9 +28,14 @@ import GiraffeKit
 // MARK: - ViewModel Protocol -
 
 struct TrendingViewModel: ViewModelType {
-    private let model: TrendingModelType
-    private let response    = MutableProperty<Response?>(nil)
     
+    private struct Constants {
+        static let RetryAttempts: Int = Int.max
+    }
+    
+    private let model: TrendingModelType
+    private let response                = MutableProperty<Response?>(nil)
+    private let items                   = MutableProperty<[Item]>([])
     private let fetchErrorMsg           = "Something went wrong while getting trending"
     private let blankMsg                = ""
     private let emptyResponseMsg        = "No items were found"
@@ -38,13 +43,13 @@ struct TrendingViewModel: ViewModelType {
     // MARK: - ViewModelType -
     
     let isActive                    = MutableProperty<Bool>(false)
+    let message                     = MutableProperty<String>("")
+    let shouldHideItemsView         = MutableProperty<Bool>(true)
+    let itemViewModels              = MutableProperty<[AnimatedImageViewModel]>([])
     
     // MARK: - TrendingViewModelType -
     
     let headline                    = ConstantProperty<String?>("Trending")
-    let message                     = MutableProperty("")
-    let items                       = MutableProperty<[Item]>([])
-    let shouldHideItemsView         = MutableProperty<Bool>(true)
     let searchText                  = MutableProperty<String>("")
     let searchResultViewModel       = MutableProperty<SearchResultViewModel?>(nil)
     
@@ -73,7 +78,7 @@ struct TrendingViewModel: ViewModelType {
             // HACK: We'd like to receive an error and update the UI, but it well known
             // that SignalProducer stops upon failure, thus we have to retry it.
             // For now, retry as much as we can (Int.max times). There has to be more correct way to do this
-            .retry(Int.max)
+            .retry(Constants.RetryAttempts)
             .startWithResult { result in
                 self.response.value = result.value!
                 self.message.value = self.response.value!.zeroItems ? self.emptyResponseMsg : self.blankMsg
@@ -81,8 +86,10 @@ struct TrendingViewModel: ViewModelType {
         
         self.items <~ self.response.producer
             .ignoreNil()
-            .map { response in
-                response.data
+            .map { response in response.data }
+        
+        self.itemViewModels <~ self.items.producer.map { items in
+            items.map{ AnimatedImageViewModel(model: $0) }
         }
         
         // Make sure, we're only showing the trending view if there are actually some results

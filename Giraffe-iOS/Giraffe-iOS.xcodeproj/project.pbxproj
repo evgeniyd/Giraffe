@@ -304,8 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				30B3B7661D3A9F140077BCAA /* TrendingViewModel.swift */,
-				30A0C2261D3C32B300627ECB /* AnimatedImageViewModel.swift */,
 				30CA50DA1D4510CA0030E566 /* SearchResultViewModel.swift */,
+				30A0C2261D3C32B300627ECB /* AnimatedImageViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";

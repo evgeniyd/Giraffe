@@ -53,7 +53,7 @@ final class TrendingViewController: BaseViewController, ViewType {
         navigationItem.rac_title <~ viewModel!.headline.producer.observeOn(UIScheduler())
         messageLabel.rac_text <~ viewModel!.message.producer.observeOn(UIScheduler())
         containerView.rac_hidden <~ viewModel!.shouldHideItemsView.producer.observeOn(UIScheduler())
-        collectionViewController.rac_items <~ viewModel!.items.producer.observeOn(UIScheduler())
+        collectionViewController.rac_itemViewModels <~ viewModel!.itemViewModels.producer.observeOn(UIScheduler())
     
         // subscribing for search text signal
         self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
