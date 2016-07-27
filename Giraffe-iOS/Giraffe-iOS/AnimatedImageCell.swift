@@ -16,7 +16,7 @@ class AnimatedImageCell: UICollectionViewCell {
     // MARK: - Outlets -
     
     @IBOutlet weak var animatedImageView: FLAnimatedImageView!
-    
+    @IBOutlet weak var trendingIndicator: UIImageView!
     // MARK: - prepareForReuse Signal -
     
     let rac_prepareForReuse_Signal: Signal<Void, NoError>
@@ -53,6 +53,7 @@ class AnimatedImageCell: UICollectionViewCell {
         self.viewModel = vm
         
         self.animatedImageView.rac_animatedImage <~ self.viewModel!.image.producer.observeOn(UIScheduler()).takeUntil(self.rac_prepareForReuse_Signal)
+        self.trendingIndicator.rac_hidden <~ self.viewModel!.shouldHideTrendingIndicator.producer.observeOn(UIScheduler()).takeUntil(self.rac_prepareForReuse_Signal)
         
         // START loading upon binding completes
         // FINISH loading upon prepare for reuse

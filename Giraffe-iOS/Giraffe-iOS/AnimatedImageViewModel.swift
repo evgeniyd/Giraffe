@@ -13,11 +13,14 @@ import Nuke
 
 struct AnimatedImageViewModel {
     private let model: Item
+    private let shouldDenoteTrending = MutableProperty<Bool>(false)
     
     let isActive  = MutableProperty<Bool>(false)
     let image = MutableProperty<NukeImage?>(nil)
+    let shouldHideTrendingIndicator = MutableProperty<Bool>(false)
     
-    init(model: Item) {
+    init(model: Item, denoteTrending shouldDenoteTrending: Bool = false) {
+        self.shouldDenoteTrending.value = shouldDenoteTrending
         self.model = model
         self.setupBindings()
     }
@@ -36,5 +39,11 @@ struct AnimatedImageViewModel {
                 self.image.value = result.value
                 
         }
+        
+        let isEverTrended = MutableProperty(self.model.trendingDate).producer.map {  $0 != nil }
+        self.shouldHideTrendingIndicator <~ combineLatest(isEverTrended, shouldDenoteTrending.producer).producer
+            .map { (first, second) in
+                return !(first && second)
+            }
     }
 }

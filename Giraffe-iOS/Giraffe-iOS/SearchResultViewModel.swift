@@ -31,6 +31,7 @@ struct SearchResultViewModel: ViewModelType {
     let message                         = MutableProperty<String>("")
     let shouldHideItemsView             = MutableProperty<Bool>(true)
     let itemViewModels                  = MutableProperty<[AnimatedImageViewModel]>([])
+    let shouldDenoteTrending            = ConstantProperty<Bool>(true)
     
     // MARK: - ViewModel Public Properties -
     
@@ -76,7 +77,7 @@ struct SearchResultViewModel: ViewModelType {
         }
         
         self.itemViewModels <~ self.items.producer.map { items in
-            items.map{ AnimatedImageViewModel(model: $0) }
+            items.map { AnimatedImageViewModel(model: $0, denoteTrending: self.shouldDenoteTrending.value) }
         }
         
         // Make sure, we're only showing the trending view if there are actually some results

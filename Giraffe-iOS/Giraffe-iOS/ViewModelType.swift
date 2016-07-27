@@ -15,4 +15,5 @@ protocol ViewModelType {
     var message: MutableProperty<String> { get }
     var shouldHideItemsView: MutableProperty<Bool> { get }
     var itemViewModels: MutableProperty<[AnimatedImageViewModel]> { get }
+    var shouldDenoteTrending: ConstantProperty<Bool> { get }
 }

@@ -133,17 +133,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="186" height="186"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UAU-DG-Ete" userLabel="Animated Image View" customClass="FLAnimatedImageView"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAU-DG-Ete" userLabel="Animated Image View" customClass="FLAnimatedImageView"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="22" placeholderIntrinsicHeight="22" image="trending" translatesAutoresizingMaskIntoConstraints="NO" id="knT-NY-fuf" userLabel="Trending Indicator Image View"/>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="UAU-DG-Ete" firstAttribute="top" secondItem="n5p-Pg-VVD" secondAttribute="top" id="0Ve-r0-zKe"/>
+                                    <constraint firstItem="knT-NY-fuf" firstAttribute="leading" secondItem="n5p-Pg-VVD" secondAttribute="leading" constant="12" id="5eR-wT-ibS"/>
+                                    <constraint firstAttribute="bottom" secondItem="knT-NY-fuf" secondAttribute="bottom" constant="10" id="DH3-6G-FGP"/>
                                     <constraint firstItem="UAU-DG-Ete" firstAttribute="leading" secondItem="n5p-Pg-VVD" secondAttribute="leading" id="Myy-nc-BpA"/>
                                     <constraint firstAttribute="bottom" secondItem="UAU-DG-Ete" secondAttribute="bottom" id="OXk-RX-xbW"/>
                                     <constraint firstAttribute="trailing" secondItem="UAU-DG-Ete" secondAttribute="trailing" id="e8z-9Z-Mcw"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="animatedImageView" destination="UAU-DG-Ete" id="pTt-0r-y5H"/>
+                                    <outlet property="trendingIndicator" destination="knT-NY-fuf" id="T1v-ew-LdB"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -161,6 +165,7 @@
     <resources>
         <image name="mainsearch" width="17" height="17"/>
         <image name="playpause" width="23" height="15"/>
+        <image name="trending" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PvZ-Gw-unh"/>

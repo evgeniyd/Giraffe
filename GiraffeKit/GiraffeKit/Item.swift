@@ -19,12 +19,6 @@ public struct Item {
     public var rating: Rating
     public var trendingDate: NSDate?
     public var images: [Image]
-    
-    // MARK: - Convenience methods -
-    
-    func isEverTrended() -> Bool {
-        return (self.trendingDate != nil)
-    }
 }
 
 ////////////////////////////////////
