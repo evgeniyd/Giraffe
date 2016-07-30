@@ -16,4 +16,6 @@ protocol ViewModelType {
     var shouldHideItemsView: MutableProperty<Bool> { get }
     var itemViewModels: MutableProperty<[AnimatedImageViewModel]> { get }
     var shouldDenoteTrending: ConstantProperty<Bool> { get }
+    var isLoading: MutableProperty<Bool> { get }
+    var statusImage: MutableProperty<UIImage?> { get }
 }

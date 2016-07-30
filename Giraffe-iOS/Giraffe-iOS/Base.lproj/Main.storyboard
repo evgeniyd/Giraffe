@@ -44,14 +44,22 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="PJv-mV-oHb">
+                                <color key="color" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="d1h-lo-aor"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PJv-mV-oHb" firstAttribute="centerX" secondItem="78n-O2-HQz" secondAttribute="centerX" id="77I-FI-tfW"/>
+                            <constraint firstItem="PJv-mV-oHb" firstAttribute="centerY" secondItem="78n-O2-HQz" secondAttribute="centerY" id="ADF-fh-3V1"/>
                             <constraint firstItem="xW8-kC-yoT" firstAttribute="leading" secondItem="78n-O2-HQz" secondAttribute="leading" id="Ajk-IX-ayL"/>
                             <constraint firstItem="HsK-JH-GvV" firstAttribute="top" secondItem="xW8-kC-yoT" secondAttribute="bottom" id="Hl9-15-Icg"/>
                             <constraint firstItem="5f0-Gg-2NB" firstAttribute="centerX" secondItem="78n-O2-HQz" secondAttribute="centerX" id="PlI-7k-IfE"/>
                             <constraint firstItem="5f0-Gg-2NB" firstAttribute="centerY" secondItem="78n-O2-HQz" secondAttribute="centerY" id="T0f-1X-nRZ"/>
+                            <constraint firstItem="HsK-JH-GvV" firstAttribute="top" secondItem="d1h-lo-aor" secondAttribute="bottom" id="bKd-pe-jUC"/>
                             <constraint firstItem="xW8-kC-yoT" firstAttribute="top" secondItem="78n-O2-HQz" secondAttribute="top" id="dFv-YK-SRP"/>
+                            <constraint firstItem="d1h-lo-aor" firstAttribute="centerX" secondItem="78n-O2-HQz" secondAttribute="centerX" id="inX-vJ-G9c"/>
                             <constraint firstAttribute="trailing" secondItem="xW8-kC-yoT" secondAttribute="trailing" id="u9e-0m-UxR"/>
                         </constraints>
                     </view>
@@ -61,7 +69,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="xW8-kC-yoT" id="k6E-QA-lZw"/>
+                        <outlet property="loadingIndicator" destination="PJv-mV-oHb" id="teb-ff-gVV"/>
                         <outlet property="messageLabel" destination="5f0-Gg-2NB" id="UPs-hE-3H4"/>
+                        <outlet property="searchButton" destination="0Kn-Kz-qga" id="Oj4-uN-2i1"/>
+                        <outlet property="statusImageView" destination="d1h-lo-aor" id="iHr-Xp-cFI"/>
                         <segue destination="M6j-Ow-nMn" kind="show" identifier="searchResultVC" id="E38-1v-Wco"/>
                     </connections>
                 </viewController>
@@ -72,7 +83,7 @@
         <!--Search Result View Controller-->
         <scene sceneID="PhI-JG-xa5">
             <objects>
-                <viewController id="M6j-Ow-nMn" customClass="SearchResultViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M6j-Ow-nMn" userLabel="Search Result View Controller" customClass="SearchResultViewController" customModule="Giraffe_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aiI-HI-BW8"/>
                         <viewControllerLayoutGuide type="bottom" id="hWe-Fo-CkG"/>
@@ -91,20 +102,34 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="spb-t2-3zZ">
+                                <color key="color" red="0.72156862749999995" green="0.72156862749999995" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="Sbp-Sl-AbN"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="spb-t2-3zZ" firstAttribute="centerY" secondItem="M0Z-xd-nMl" secondAttribute="centerY" id="07o-ig-a4e"/>
                             <constraint firstItem="RN0-CN-hSk" firstAttribute="top" secondItem="aiI-HI-BW8" secondAttribute="bottom" id="0tD-7C-s0z"/>
                             <constraint firstAttribute="trailing" secondItem="RN0-CN-hSk" secondAttribute="trailing" id="65x-z5-slm"/>
+                            <constraint firstItem="spb-t2-3zZ" firstAttribute="centerX" secondItem="M0Z-xd-nMl" secondAttribute="centerX" id="OkM-QA-YcZ"/>
+                            <constraint firstItem="hWe-Fo-CkG" firstAttribute="top" secondItem="Sbp-Sl-AbN" secondAttribute="bottom" id="QVY-DF-aog"/>
+                            <constraint firstItem="Sbp-Sl-AbN" firstAttribute="centerX" secondItem="M0Z-xd-nMl" secondAttribute="centerX" id="WHd-2T-6DZ"/>
                             <constraint firstItem="to6-GI-F9K" firstAttribute="centerX" secondItem="M0Z-xd-nMl" secondAttribute="centerX" id="XYT-Bx-KJX"/>
                             <constraint firstItem="hWe-Fo-CkG" firstAttribute="top" secondItem="RN0-CN-hSk" secondAttribute="bottom" id="a8D-6s-MGz"/>
                             <constraint firstItem="RN0-CN-hSk" firstAttribute="leading" secondItem="M0Z-xd-nMl" secondAttribute="leading" id="e35-qA-sRW"/>
                             <constraint firstItem="to6-GI-F9K" firstAttribute="centerY" secondItem="M0Z-xd-nMl" secondAttribute="centerY" id="uVz-2t-vaq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="EVs-kh-Q0Y">
+                        <barButtonItem key="rightBarButtonItem" image="family" id="LBU-il-6Xg"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="RN0-CN-hSk" id="SLt-Sq-e5W"/>
+                        <outlet property="familyFrendlyButton" destination="LBU-il-6Xg" id="nnV-5y-7Sd"/>
+                        <outlet property="loadingIndicator" destination="spb-t2-3zZ" id="CZD-Hu-qvq"/>
                         <outlet property="messageLabel" destination="to6-GI-F9K" id="ldS-wj-dJW"/>
+                        <outlet property="statusImageView" destination="Sbp-Sl-AbN" id="tK8-gO-Ovy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZ9-af-IIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -163,7 +188,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="family" width="29" height="19"/>
+        <image name="loading" width="128" height="225"/>
         <image name="mainsearch" width="17" height="17"/>
+        <image name="notfound" width="340" height="225"/>
         <image name="playpause" width="23" height="15"/>
         <image name="trending" width="22" height="22"/>
     </resources>

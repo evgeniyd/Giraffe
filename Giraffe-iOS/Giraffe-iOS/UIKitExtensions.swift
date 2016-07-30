@@ -15,6 +15,9 @@ struct AssociationKey {
     static var text: UInt8 = 3
     static var image: UInt8 = 4
     static var title: UInt8 = 5
+    static var enabled: UInt8 = 6
+    static var selected: UInt8 = 7
+    static var animated: UInt8 = 8
 }
 
 // lazily creates a gettable associated property via the given factory
@@ -84,5 +87,25 @@ extension UITextField {
 extension UINavigationItem {
     public var rac_title: MutableProperty<String?> {
         return lazyMutableProperty(self, key: &AssociationKey.title, setter: { self.title = $0 }, getter: { self.title })
+    }
+}
+
+extension UIBarButtonItem {
+    public var rac_enabled: MutableProperty<Bool> {
+        return lazyMutableProperty(self, key: &AssociationKey.enabled, setter: { self.enabled = $0 }, getter: { self.enabled  })
+    }
+    
+    // TODO: return valid value in rac_selected getter
+    public var rac_selected: MutableProperty<Bool> {
+        return lazyMutableProperty(self, key: &AssociationKey.selected,
+                                   setter: { self.image = $0 ? UIImage(named: "familyhl") : UIImage(named: "family") },
+                                   getter: { self.enabled /*fake*/  }
+        )
+    }
+}
+
+extension UIActivityIndicatorView {
+    public var rac_animated: MutableProperty<Bool> {
+        return lazyMutableProperty(self, key: &AssociationKey.animated, setter: { $0 ? self.startAnimating() : self.stopAnimating() }, getter: { self.isAnimating() })
     }
 }

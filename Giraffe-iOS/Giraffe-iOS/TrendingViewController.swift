@@ -23,6 +23,8 @@ final class TrendingViewController: BaseViewController, ViewType {
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var statusImageView: UIImageView!
     
     // MARK: - View Life Cycle -
     
@@ -54,7 +56,10 @@ final class TrendingViewController: BaseViewController, ViewType {
         messageLabel.rac_text <~ viewModel!.message.producer.observeOn(UIScheduler())
         containerView.rac_hidden <~ viewModel!.shouldHideItemsView.producer.observeOn(UIScheduler())
         collectionViewController.rac_itemViewModels <~ viewModel!.itemViewModels.producer.observeOn(UIScheduler())
-    
+        searchButton.rac_enabled <~ viewModel!.shouldEnableSearchButton.producer.observeOn(UIScheduler())
+        loadingIndicator.rac_animated <~ viewModel!.isLoading.producer.map{ $0 }.observeOn(UIScheduler())
+        statusImageView.rac_image <~ viewModel!.statusImage.producer.observeOn(UIScheduler())
+        
         // subscribing for search text signal
         self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
             .map { object in
@@ -72,7 +77,6 @@ final class TrendingViewController: BaseViewController, ViewType {
             }
         }
         searchBar.delegate = self
-        
     }
 
     @objc func didChangeAnimationPlayback() {

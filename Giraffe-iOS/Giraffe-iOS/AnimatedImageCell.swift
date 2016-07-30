@@ -55,8 +55,8 @@ class AnimatedImageCell: UICollectionViewCell {
         self.animatedImageView.rac_animatedImage <~ self.viewModel!.image.producer.observeOn(UIScheduler()).takeUntil(self.rac_prepareForReuse_Signal)
         self.trendingIndicator.rac_hidden <~ self.viewModel!.shouldHideTrendingIndicator.producer.observeOn(UIScheduler()).takeUntil(self.rac_prepareForReuse_Signal)
         
-        // START loading upon binding completes
-        // FINISH loading upon prepare for reuse
+        // ACTIVATE upon binding completes
+        // DEACTIVATE loading upon prepare for reuse
         let (activeSignal, activeObserver) = Signal<Bool, NoError>.pipe()
         let inactiveSignal = self.rac_prepareForReuse_Signal.map { _ in false }
         self.viewModel!.isActive <~ Signal.merge([inactiveSignal,activeSignal])

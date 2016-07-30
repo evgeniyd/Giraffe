@@ -17,7 +17,9 @@ final class SearchResultViewController: BaseViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
-    
+    @IBOutlet weak var familyFrendlyButton: UIBarButtonItem!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var statusImageView: UIImageView!
     // MARK: - View Life Cycle -
     
     override func viewDidLoad() {
@@ -39,6 +41,12 @@ final class SearchResultViewController: BaseViewController {
         collectionViewController.rac_itemViewModels <~ viewModel!.itemViewModels.producer.observeOn(UIScheduler())
         messageLabel.rac_text <~ viewModel!.message.producer.observeOn(UIScheduler())
         containerView.rac_hidden <~ viewModel!.shouldHideItemsView.producer.observeOn(UIScheduler())
+        familyFrendlyButton.rac_enabled <~ viewModel!.shouldEnableFamilyFilterButton.producer.observeOn(UIScheduler())
+        familyFrendlyButton.rac_selected <~ viewModel!.shouldSelectFamilyFilterButton.producer.observeOn(UIScheduler())
+        loadingIndicator.rac_animated <~ viewModel!.isLoading.producer.map{ $0 }.observeOn(UIScheduler())
+        statusImageView.rac_image <~ viewModel!.statusImage.producer.observeOn(UIScheduler())
+
+        familyFrendlyButton.rac_command = viewModel!.toggleFamilyFilter
         
         let viewWillAppear = self.rac_signalForSelector(#selector(UIViewController.viewWillAppear(_:))).toSignalProducer().ignoreError().ignoreNil().map { _ in true }
         let viewWillDisappear = self.rac_signalForSelector(#selector(UIViewController.viewWillDisappear(_:))).toSignalProducer().ignoreError().ignoreNil().map { _ in false }

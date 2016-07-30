@@ -20,22 +20,31 @@ struct SearchResultViewModel: ViewModelType {
     private let model: SearchResult
     private let response                = MutableProperty<Response?>(nil)
     private let items                   = MutableProperty<[Item]>([])
-    
+    private let isFamilyFriendlyActive  = MutableProperty<Bool>(true)
+    // messages
     private let fetchErrorMsg           = "Something went wrong while getting trending"
     private let blankMsg                = ""
     private let emptyResponseMsg        = "No items were found"
-    
+    // images
+    private let loadingImage            = UIImage(named: "GiraffeIsThinking")
+    private let notFoundImage           = UIImage(named: "GiraffeIsDisappointed")
+
     // MARK: - ViewModelType -
     
     let isActive                        = MutableProperty<Bool>(false)
     let message                         = MutableProperty<String>("")
     let shouldHideItemsView             = MutableProperty<Bool>(true)
     let itemViewModels                  = MutableProperty<[AnimatedImageViewModel]>([])
-    let shouldDenoteTrending            = ConstantProperty<Bool>(true)
+    let shouldDenoteTrending            = ConstantProperty<Bool>(false)
+    let isLoading                       = MutableProperty<Bool>(false)
+    let statusImage                     = MutableProperty<UIImage?>(nil)
     
     // MARK: - ViewModel Public Properties -
     
-    let headline                    = MutableProperty<String?>(nil)
+    let headline                        = MutableProperty<String?>(nil)
+    var toggleFamilyFilter: RACCommand? = nil
+    let shouldEnableFamilyFilterButton  = MutableProperty<Bool>(false)
+    let shouldSelectFamilyFilterButton  = MutableProperty<Bool>(false)
     
     // MARK: - Initialization -
     
@@ -54,13 +63,24 @@ struct SearchResultViewModel: ViewModelType {
             .filter { $0 }
             .mapError { _ in
                 return GiraffeError.UnknownError
-            }
+            }.on(next: { _ in
+                self.isLoading.value = true
+                self.statusImage.value = self.loadingImage
+            })
+
             .flatMap(.Latest) { _ in
                 return self.model.startPage()
             }
             .on(failed: { _ in
-                self.message.value = self.fetchErrorMsg
-            })
+                    self.isLoading.value = false
+                    self.message.value = self.fetchErrorMsg
+                    self.statusImage.value = nil
+                },
+                next: { _ in
+                    self.isLoading.value = false
+                    self.statusImage.value = nil
+                }
+            )
             // HACK: We'd like to receive an error and update the UI, but it well known
             // that SignalProducer stops upon failure, thus we have to retry it.
             // For now, retry as much as we can (Int.max times). There has to be more correct way to do this
@@ -80,10 +100,14 @@ struct SearchResultViewModel: ViewModelType {
             items.map { AnimatedImageViewModel(model: $0, denoteTrending: self.shouldDenoteTrending.value) }
         }
         
-        // Make sure, we're only showing the trending view if there are actually some results
-        self.shouldHideItemsView <~ self.items.producer.map { items in
+        let noItemsSignal = self.items.producer.map { items in
             items.count == 0
         }
+        
+        self.shouldHideItemsView <~ noItemsSignal
+        self.statusImage <~ noItemsSignal.map { $0 ? self.notFoundImage : nil }
+        self.shouldEnableFamilyFilterButton <~ self.isLoading.producer.map { !$0 }
+        self.shouldSelectFamilyFilterButton <~ self.isFamilyFriendlyActive
     }
 }
 
