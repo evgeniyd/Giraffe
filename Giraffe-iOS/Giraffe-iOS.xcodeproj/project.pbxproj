@@ -14,9 +14,6 @@
 		30061B931D29209800ABEF7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30061B911D29209800ABEF7F /* LaunchScreen.storyboard */; };
 		30061B9E1D29209800ABEF7F /* Giraffe_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061B9D1D29209800ABEF7F /* Giraffe_iOSTests.swift */; };
 		30061BA91D29209800ABEF7F /* Giraffe_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30061BA81D29209800ABEF7F /* Giraffe_iOSUITests.swift */; };
-		30061BFA1D29CFF300ABEF7F /* 01.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF71D29CFF300ABEF7F /* 01.gif */; };
-		30061BFB1D29CFF300ABEF7F /* 02.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF81D29CFF300ABEF7F /* 02.gif */; };
-		30061BFC1D29CFF300ABEF7F /* 03.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30061BF91D29CFF300ABEF7F /* 03.gif */; };
 		30061C021D29D3A600ABEF7F /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */; };
 		301593091D326D21009813E5 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301593071D326D21009813E5 /* ReactiveCocoa.framework */; };
 		3015930A1D326D21009813E5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301593081D326D21009813E5 /* Result.framework */; };
@@ -92,9 +89,6 @@
 		30061BA41D29209800ABEF7F /* Giraffe-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Giraffe-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30061BA81D29209800ABEF7F /* Giraffe_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giraffe_iOSUITests.swift; sourceTree = "<group>"; };
 		30061BAA1D29209800ABEF7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30061BF71D29CFF300ABEF7F /* 01.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 01.gif; path = SampleGIFs/01.gif; sourceTree = "<group>"; };
-		30061BF81D29CFF300ABEF7F /* 02.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 02.gif; path = SampleGIFs/02.gif; sourceTree = "<group>"; };
-		30061BF91D29CFF300ABEF7F /* 03.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 03.gif; path = SampleGIFs/03.gif; sourceTree = "<group>"; };
 		30061C011D29D3A600ABEF7F /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = ../Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		301593071D326D21009813E5 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		301593081D326D21009813E5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -189,7 +183,6 @@
 				30B3B7691D3A9F460077BCAA /* Utils */,
 				30FC78671D425E1400D5DE5E /* Reactive Extensions */,
 				30CA4C2B1D30298600A36F69 /* Framework Extensions */,
-				30061BF61D29CF9500ABEF7F /* SampleGIFs */,
 				3089E8C71D2DA69800726903 /* Supporting Files */,
 			);
 			path = "Giraffe-iOS";
@@ -225,16 +218,6 @@
 				301593081D326D21009813E5 /* Result.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		30061BF61D29CF9500ABEF7F /* SampleGIFs */ = {
-			isa = PBXGroup;
-			children = (
-				30061BF71D29CFF300ABEF7F /* 01.gif */,
-				30061BF81D29CFF300ABEF7F /* 02.gif */,
-				30061BF91D29CFF300ABEF7F /* 03.gif */,
-			);
-			name = SampleGIFs;
 			sourceTree = "<group>";
 		};
 		3089E8C71D2DA69800726903 /* Supporting Files */ = {
@@ -433,13 +416,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30061BFB1D29CFF300ABEF7F /* 02.gif in Resources */,
 				30305A3F1D3052F60059919F /* InfoPlist.strings in Resources */,
 				30061B931D29209800ABEF7F /* LaunchScreen.storyboard in Resources */,
 				30061B901D29209800ABEF7F /* Assets.xcassets in Resources */,
-				30061BFC1D29CFF300ABEF7F /* 03.gif in Resources */,
 				30061B8E1D29209800ABEF7F /* Main.storyboard in Resources */,
-				30061BFA1D29CFF300ABEF7F /* 01.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
