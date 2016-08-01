@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 import GiraffeKit
 
-// MARK: - Model Implementation -
+// MARK: Model Implementation -
 
 final class Trending: Pageable {
     var page: Page?
@@ -19,7 +19,7 @@ final class Trending: Pageable {
         // do nothing
     }
     
-    // MARK: - Pageable -
+    // MARK: Pageable -
     
     func nextPage() -> SignalProducer<Response?, GiraffeError> {
         let params = getNextPageParameters()

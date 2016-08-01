@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-// Semantic data type
-typealias SegueIdentifier = String
+// MARK: Common View Controller Appearance -
 
-// MARK: - Common View Controller Appearance -
+// Note: This is a direct mapping between plain parameters one might
+// want to customize and their direct application to the "real" properties
 
 protocol ViewControllerAppearance {
     var navigationBarBackgroundColor: UIColor { get }
@@ -29,7 +29,8 @@ struct DefaultViewControllerAppearance: ViewControllerAppearance {
 }
 
 protocol ViewControllerAppearanceCustomizable {
-    /// call the method in viewDidLoad:
+    // In order to make everything work, this should be called in
+    // -viewDidLayoutSubviews()
     func applyCustomAppearance(appearance: ViewControllerAppearance)
 }
 
@@ -43,7 +44,7 @@ extension ViewControllerAppearanceCustomizable where Self: UIViewController {
     }
 }
 
-// MARK: - Status Bar for Navigation Ctrl -
+// MARK: Status Bar for Navigation Ctrl -
 
 extension UINavigationController {
     public override func childViewControllerForStatusBarHidden() -> UIViewController? {
@@ -55,7 +56,7 @@ extension UINavigationController {
     }
 }
 
-// MARK: - Search Bar -
+// MARK: Search Bar -
 
 extension UISearchBar {
     class func giraffeSearchBar() -> UISearchBar {
@@ -65,16 +66,17 @@ extension UISearchBar {
         searchBar.setImage(UIImage(named: "cancelsearch-highlighted"), forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Highlighted)
         searchBar.setImage(UIImage(named: "searchbar"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
         searchBar.setImage(UIImage(named: "searchbar"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Highlighted)
+        searchBar.tintColor = .giraffeOrange()
+        searchBar.barTintColor = .giraffeOrange()
         return searchBar
     }
 }
 
-// MARK: - Global Appearance -
+// MARK: Global Appearance -
 
+// Should be called somewhere at application launch sequence (AppDelegate)
 extension UIApplication {
     func applyGlobalAppearance() {
-        UISearchBar.appearance().barTintColor = .giraffeYellow()
-        UISearchBar.appearance().tintColor = .giraffeOrange()
         UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).tintColor = .giraffeOrange()
         UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).backgroundColor = .giraffeWhite()
     }

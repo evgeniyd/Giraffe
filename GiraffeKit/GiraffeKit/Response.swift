@@ -10,7 +10,7 @@ import Foundation
 import Unbox
 
 ////////////////////////////////////
-// MARK: - Model -
+// MARK: Model -
 ////////////////////////////////////
 
 public struct Meta {
@@ -23,7 +23,7 @@ public struct Page {
     public var count: Int
     public var offset: Int
     
-    // MARK: - Convinient Methods - 
+    // MARK: Convinient Methods -
     
     public func hasNextPage() -> Bool {
         guard let total = totalCount else { return true } // no limit
@@ -43,7 +43,7 @@ public struct Response {
 }
 
 ////////////////////////////////////
-// MARK: - Convenience methods -
+// MARK: Convenience methods -
 ////////////////////////////////////
 
 extension Response {
@@ -53,8 +53,9 @@ extension Response {
         }
     }
 }
+
 ////////////////////////////////////
-// MARK: - Unboxable extension -
+// MARK: Unboxable extension -
 ////////////////////////////////////
 
 extension Meta: Unboxable {

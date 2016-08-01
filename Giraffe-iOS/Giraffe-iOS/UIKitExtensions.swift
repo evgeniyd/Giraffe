@@ -128,7 +128,7 @@ extension UISearchBar: UISearchBarDelegate {
         })
     }
     
-    func changed() {
+    private func changed() {
         rac_text.value = self.text ?? ""
     }
     

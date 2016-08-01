@@ -9,6 +9,7 @@
 import ReactiveCocoa
 import Result
 
+// SignalProducer<Value, ErrorType> -> SignalProducer<Value, NoError>
 extension SignalProducer where Value: OptionalType {
     public func ignoreError() -> SignalProducer<Value, NoError> {
         return flatMapError { _ in
@@ -17,12 +18,14 @@ extension SignalProducer where Value: OptionalType {
     }
 }
 
+// Merge a collection of SignalProducer's
 public func merge<T, E>(signals: [SignalProducer<T, E>]) -> SignalProducer<T, E> {
     return SignalProducer<SignalProducer<T, E>, E>(values: signals).flatten(.Merge)
 }
 
 
 extension Signal {
+    // Merget two Signal's
     public static func merge<S: SequenceType where S.Generator.Element == Signal<Value, Error>>(signals: S) -> Signal<Value, Error> {
         let producer = SignalProducer<Signal<Value, Error>, Error>(values: signals)
         var result: Signal<Value, Error>!

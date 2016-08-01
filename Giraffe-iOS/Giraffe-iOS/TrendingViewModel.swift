@@ -10,22 +10,7 @@ import Foundation
 import ReactiveCocoa
 import GiraffeKit
 
-
-// TODO: I'd be happy to create something like this:
-//
-// protocol TrendingViewModelType: ViewModelType { 
-//     /* interface used by a view */
-// }
-//
-// However, sadly, Swift cannot infer 
-// 'associatedtype VM: ViewModelType' from ViewType protocol
-// when TrendingViewModelType type is specified for 
-// 'var viewModel: TrendingViewModelType?' requirement
-// We are forced to use concrete type when conforming to ViewType protocol
-// More Info : http://stackoverflow.com/questions/37360114/unable-to-use-protocol-as-associatedtype-in-another-protocol-in-swift/37360351#37360351
-
-
-// MARK: - ViewModel Protocol -
+// MARK: ViewModel Protocol -
 
 struct TrendingViewModel: ViewModelType {
     
@@ -44,7 +29,7 @@ struct TrendingViewModel: ViewModelType {
     private let loadingImage            = UIImage(named: "GiraffeIsThinking")
     private let notFoundImage           = UIImage(named: "GiraffeIsDisappointed")
     
-    // MARK: - ViewModelType -
+    // MARK: ViewModelType -
     
     let isActive                    = MutableProperty<Bool>(false)
     let message                     = MutableProperty<String>("")
@@ -54,7 +39,7 @@ struct TrendingViewModel: ViewModelType {
     let isLoading                   = MutableProperty<Bool>(false)
     let statusImage                 = MutableProperty<UIImage?>(nil)
     
-    // MARK: - TrendingViewModelType -
+    // MARK: ViewModel Public Properties -
     
     let headline                    = ConstantProperty<String?>("Trending")
     let searchText                  = MutableProperty<String>("")
@@ -63,7 +48,7 @@ struct TrendingViewModel: ViewModelType {
     
     let didScrollToBottom           = MutableProperty<Void>()
     
-    // MARK: - Initialization -
+    // MARK: Initialization -
     
     init(model: Pageable) {
         self.model = model

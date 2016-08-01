@@ -15,13 +15,13 @@ import NukeAnimatedImagePlugin
 typealias GiraffeImage = GiraffeKit.Image
 typealias NukeImage = Nuke.Image
 
-// MARK: - RAC gettable image -
+// MARK: RAC gettable image -
 
 protocol ImageGettable {
     func get() -> SignalProducer<NukeImage, GiraffeError>
 }
 
-// MARK: - Default ImageGettable implementation for GiraffeImage -
+// MARK: Default ImageGettable implementation for GiraffeImage -
 
 extension GiraffeImage: ImageGettable {
     func get() -> SignalProducer<NukeImage, GiraffeError> {
@@ -59,7 +59,7 @@ extension GiraffeImage: ImageGettable {
     }
 }
 
-// MARK: - Nuke Extensions -
+// MARK: Nuke Extensions -
 
 extension ImageManager {
     public static func configuredForAnimatedImages() -> ImageManager {
@@ -79,7 +79,7 @@ extension ImageTask {
     }
 }
 
-// MARK: - NukeAnimatedImagePlugin & FLAnimatedImage Extensions -
+// MARK: NukeAnimatedImagePlugin & FLAnimatedImage Extensions -
 
 import FLAnimatedImage
 

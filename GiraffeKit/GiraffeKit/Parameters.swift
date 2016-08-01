@@ -20,13 +20,13 @@ public struct Parameters: ServiceActionBodyTransformable {
         self.rating = rating
     }
     
-    // MARK: - ServiceActionBodyTransformable -
+    // MARK: ServiceActionBodyTransformable -
     
     func serviceActionBody() -> ServiceActionBody? {
         var result: ServiceActionBody = [:]
         if let _ = limit { result["limit"] = limit!.description }
         if let _ = offset { result["offset"] = offset!.description }
         if let _ = rating { result["rating"] = rating!.description }
-        return result.isEmpty ? nil : result // return nil, when empty
+        return result.isEmpty ? nil : result // convert empty to nil
     }
 }

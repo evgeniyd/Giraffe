@@ -11,7 +11,7 @@ import Unbox
 import CoreGraphics
 
 ////////////////////////////////////
-// MARK: - Main Model -
+// MARK: Main Model -
 ////////////////////////////////////
 public struct Item {
     public var id: String
@@ -20,7 +20,7 @@ public struct Item {
     public var trendingDate: NSDate?
     public var images: [Image]
     
-    // MARK: - FamilyFriendlyDetectable
+    // MARK: FamilyFriendlyDetectable -
     
     public func isFamilyFriendly() -> Bool {
         return self.rating.isFamilyFriendly()
@@ -28,7 +28,7 @@ public struct Item {
 }
 
 ////////////////////////////////////
-// MARK: - Supporting Models -
+// MARK: Supporting Models -
 ////////////////////////////////////
 
 public enum ContentType: String {
@@ -45,7 +45,7 @@ public enum Rating: String, CustomStringConvertible, FamilyFriendlyDetectable {
     case r                  // Restricted. Under 17 requires accompanying parent or adult guardian.
     case unspecified = ""
     
-    // MARK: - FamilyFriendlyDetectable
+    // MARK: FamilyFriendlyDetectable -
     
     public func isFamilyFriendly() -> Bool {
         //rated y,g, or pg
@@ -57,7 +57,7 @@ public enum Rating: String, CustomStringConvertible, FamilyFriendlyDetectable {
         }
     }
     
-    // MARK: - CustomStringConvertible
+    // MARK: CustomStringConvertible -
     
     public var description: String {
         get {
@@ -72,7 +72,7 @@ public struct Image {
     public var width: CGFloat
     public var height: CGFloat
     
-    // MARK: - Convenience methods -
+    // MARK: Convenience methods -
     
     public var size: CGSize {
         get { return CGSizeMake(self.width, self.height); }
@@ -117,14 +117,15 @@ public enum ImageVariant {
 }
 
 ////////////////////////////////////
-// MARK: - Protocols -
+// MARK: Protocols -
 ////////////////////////////////////
 
 public protocol FamilyFriendlyDetectable {
     func isFamilyFriendly() -> Bool
 }
+
 ////////////////////////////////////
-// MARK: - Unboxable extension -
+// MARK: Unboxable extension -
 ////////////////////////////////////
 
 private struct Static {

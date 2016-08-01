@@ -13,16 +13,16 @@ import Result
 
 class AnimatedImageCell: UICollectionViewCell {
     
-    // MARK: - Outlets -
+    // MARK: Outlets -
     
     @IBOutlet weak var animatedImageView: FLAnimatedImageView!
     @IBOutlet weak var trendingIndicator: UIImageView!
-    // MARK: - prepareForReuse Signal -
+    // MARK: prepareForReuse Signal -
     
     let racsignal_prepareForReuse: Signal<Void, NoError>
     let racobserver_prepareForReuse: Observer<Void, NoError>
     
-    // MARK: - Initialization -
+    // MARK: Initialization -
     
     override init(frame: CGRect) {
         fatalError("init(frame:) is not implemented")
@@ -34,18 +34,18 @@ class AnimatedImageCell: UICollectionViewCell {
         contentView.backgroundColor = .giraffeLightGray()
     }
     
-    // MARK: - ViewType Protocol -
+    // MARK: ViewType Protocol -
     
     private(set) var viewModel: AnimatedImageViewModel?
     
-    // MARK: - UICollectionReusableView overrides -
+    // MARK: UICollectionReusableView overrides -
     
     override func prepareForReuse() {
         super.prepareForReuse()
         self.racobserver_prepareForReuse.sendNext()
     }
     
-    // MARK: - Configuration -
+    // MARK: Configuration -
     
     func bind(viewModel vm: AnimatedImageViewModel) {
         self.viewModel = vm

@@ -32,7 +32,7 @@ final class SearchResultViewModel: ViewModelType {
     private let loadingImage            = UIImage(named: "GiraffeIsThinking")
     private let notFoundImage           = UIImage(named: "GiraffeIsDisappointed")
 
-    // MARK: - ViewModelType -
+    // MARK: ViewModelType -
     
     let isActive                        = MutableProperty<Bool>(false)
     let message                         = MutableProperty<String>("")
@@ -42,14 +42,14 @@ final class SearchResultViewModel: ViewModelType {
     let isLoading                       = MutableProperty<Bool>(false)
     let statusImage                     = MutableProperty<UIImage?>(nil)
     
-    // MARK: - ViewModel Public Properties -
+    // MARK: ViewModel Public Properties -
     
     let headline                        = MutableProperty<String?>(nil)
     // TODO: make it const and Not Optional
     private(set) var toggleFamilyFilter : Action<Void,Void,NoError>?
     let shouldSelectFamilyFilterButton  = MutableProperty<Bool>(false)
     
-    // MARK: - Initialization -
+    // MARK: Initialization -
     
     init(model: SearchResult) {
         self.model = model

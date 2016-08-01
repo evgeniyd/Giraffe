@@ -18,13 +18,14 @@ public enum GiraffeError: ErrorType, CustomStringConvertible {
     case NetworkError
     case ParserError
     case LoadImageError(String)
+    // TODO: extend to more cases
     
     public var nsError: NSError {
         // TODO: add custom error code
         return NSError(domain: GiraffeErrorDomain, code: 0, userInfo: nil)
     }
     
-    // MARK: - CustomStringConvertible -
+    // MARK: CustomStringConvertible -
     
     public var description: String {
         switch self {

@@ -10,10 +10,10 @@ import Foundation
 import Unbox
 
 ////////////////////////////////////
-// MARK: - Decodable extension -
+// MARK: Decodable extension -
 ////////////////////////////////////
 
-// TODO: implement something like
+// TODO: make this reactive:
 // public static func decodedFrom(data data: NSData, response: NSURLResponse) -> SignalProducer<Response?, NSError>
 
 extension Response: Decodable {

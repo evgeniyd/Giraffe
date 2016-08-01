@@ -20,7 +20,8 @@ final class SearchResultViewController: BaseViewController {
     @IBOutlet weak var filterButton: UIBarButtonItem!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var statusImageView: UIImageView!
-    // MARK: - View Life Cycle -
+    
+    // MARK: View Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ final class SearchResultViewController: BaseViewController {
         setupBindings()
     }
     
-    // MARK: - RAC -
+    // MARK: RAC -
     
     func bindWith(viewModel vm: SearchResultViewModel) {
         self.viewModel = vm
@@ -52,7 +53,7 @@ final class SearchResultViewController: BaseViewController {
         self.viewModel!.isActive <~ merge([viewWillAppear, viewWillDisappear])
     }
     
-    // MARK: - Actions -
+    // MARK: Actions -
     
     @IBAction func onFilterButtonTap(sender: AnyObject) {
         _ = viewModel!.toggleFamilyFilter!.apply().start()

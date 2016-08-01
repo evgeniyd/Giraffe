@@ -19,7 +19,7 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
     let rac_itemViewModels = MutableProperty<[AnimatedImageViewModel]>([])
     let racsignal_didScrollToBottom: Signal<Void, NoError>
     
-    // MARK: - Initializer -
+    // MARK: Initializer -
     
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         (racsignal_didScrollToBottom, racobserver_didScrollToBottom) = Signal<Void, NoError>.pipe()
@@ -36,14 +36,14 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
         super.init(coder: aDecoder)
     }
     
-    // MARK: - View Life Cycle -
+    // MARK: View Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupBindings()
     }
     
-    // MARK: - Collection View Data Source -
+    // MARK: Collection View Data Source -
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.rac_itemViewModels.value.count
@@ -56,7 +56,7 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
         return animatedImageCell
     }
     
-    // MARK: - UICollectionViewDelegateFlowLayout -
+    // MARK: UICollectionViewDelegateFlowLayout -
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         let minSpaceForCells: CGFloat = 1.0
@@ -64,7 +64,7 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
         return CGSizeMake(width/2.0, width/2.0)
     }
     
-    // MARK: - RAC binding -
+    // MARK: RAC binding -
     
     private func setupBindings() {
         // ???: do we need some timeout, so reloadData is not called in the same run loop?
@@ -76,7 +76,7 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
             .start()
     }
     
-    // MARK: - UIScrollViewDelegate - 
+    // MARK: UIScrollViewDelegate - 
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset

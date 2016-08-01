@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 import GiraffeKit
 
-// MARK: - Model Implementation -
+// MARK: Model Implementation -
 
 final class SearchResult: Pageable {
     private let query: String
@@ -20,7 +20,7 @@ final class SearchResult: Pageable {
         self.query = q
     }
     
-    // MARK: - Pageable -
+    // MARK: Pageable -
     
     func nextPage() -> SignalProducer<Response?, GiraffeError> {
         let params = getNextPageParameters()

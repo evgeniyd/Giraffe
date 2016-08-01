@@ -14,6 +14,7 @@
 		30502EA31D2D19A70092A8AD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA11D2D19A60092A8AD /* Service.swift */; };
 		30502EA51D2D1AC60092A8AD /* TrendingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA41D2D1AC60092A8AD /* TrendingService.swift */; };
 		30502EA61D2D1AC60092A8AD /* TrendingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30502EA41D2D1AC60092A8AD /* TrendingService.swift */; };
+		305B7C231D4F97A8009B3FF0 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F2AE991D4E6F4D00E3496F /* Parameters.swift */; };
 		307DF0EA1D3ECB5B003EFE41 /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307DF0E91D3ECB5B003EFE41 /* Unbox.framework */; };
 		307DF0F11D3ED215003EFE41 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DF0F01D3ED215003EFE41 /* Response.swift */; };
 		307DF0F51D3EDF01003EFE41 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DF0F41D3EDF01003EFE41 /* Decodable.swift */; };
@@ -260,8 +261,6 @@
 					};
 					30061BC91D2920FE00ABEF7F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QL6S7D28EA;
-						DevelopmentTeamName = "Yevhen Dubinin";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -342,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				305B7C231D4F97A8009B3FF0 /* Parameters.swift in Sources */,
 				30502EA61D2D1AC60092A8AD /* TrendingService.swift in Sources */,
 				3089E8C31D2D943E00726903 /* SearchService.swift in Sources */,
 				30A357FB1D3EF91A00B6183F /* NSDateFormatter+GiraffeKit.swift in Sources */,

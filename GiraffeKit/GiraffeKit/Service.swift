@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Action Body Type/Proto -
+// MARK: Action Body Type/Proto -
 
 public typealias ServiceActionBody = [String: String]
 
@@ -16,13 +16,13 @@ protocol ServiceActionBodyTransformable {
     func serviceActionBody() -> ServiceActionBody?
 }
 
-// MARK: - Transfer Protocol Type -
+// MARK: Transfer Protocol Type -
 
 public enum TransferProtocol: String {
     case http, https
 }
 
-// MARK: - Main Service Protocols -
+// MARK: Main Service Protocols -
 
 public protocol ServiceProtocol {
     var transferProtocol: TransferProtocol { get }
@@ -39,7 +39,7 @@ public protocol ServiceRequestable {
     func request() -> NSURLRequest
 }
 
-// MARK: - ServiceProtocol Default -
+// MARK: ServiceProtocol Default -
 
 extension ServiceProtocol { // ???: Do we need some constraints to this proto extension?
     public var transferProtocol: TransferProtocol {
@@ -63,7 +63,7 @@ extension ServiceProtocol { // ???: Do we need some constraints to this proto ex
     }
 }
 
-// MARK: - ServiceRequestable Default -
+// MARK: ServiceRequestable Default -
 
 extension ServiceRequestable where Self: ServiceProtocol {
     public func request() -> NSURLRequest {

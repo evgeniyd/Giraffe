@@ -10,14 +10,14 @@ import Foundation
 import ReactiveCocoa
 import GiraffeKit
 
-// MARK: - Model Constant -
+// MARK: Model Constant -
 
 struct ServiceConstanst {
     static let itemsPerPage = 26
     static let retryAttempts = 3
 }
 
-// MARK: - Model Page Protocol -
+// MARK: Model Page Protocol -
 
 protocol Pageable {
     var page: Page? { get set }
@@ -34,7 +34,7 @@ extension Pageable {
     }
 }
 
-// MARK: - Parameters Extension -
+// MARK: Parameters Extension -
 
 extension Pageable {
     func getNextPageParameters() -> Parameters {
@@ -50,7 +50,7 @@ extension Pageable {
     }
 }
 
-// MARK: - Invokable Protocol -
+// MARK: Invokable Protocol -
 
 protocol Invokable: class {
     func invoke(service s: ServiceRequestable) -> SignalProducer<Response?, GiraffeError>

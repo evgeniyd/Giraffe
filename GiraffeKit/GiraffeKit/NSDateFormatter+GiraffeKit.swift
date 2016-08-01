@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSDateFormatter {
-    public static func giraffeDateFormatter() -> NSDateFormatter {
+    static func giraffeDateFormatter() -> NSDateFormatter {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter

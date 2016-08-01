@@ -26,7 +26,7 @@ final class TrendingViewController: BaseViewController, ViewType {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var statusImageView: UIImageView!
     
-    // MARK: - View Life Cycle -
+    // MARK: View Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ final class TrendingViewController: BaseViewController, ViewType {
         setupBindings()
     }
 
-    // MARK: - RAC Bindings -
+    // MARK: RAC Bindings -
     
     func setupBindings() {
         // Setup view helper bindings.
@@ -81,7 +81,7 @@ final class TrendingViewController: BaseViewController, ViewType {
         // TODO: start/stop animation
     }
     
-    // MARK: - Search Bar Presentation -
+    // MARK: Search Bar Presentation -
     
     @objc func didPressSearchButton() {
         showSearchBar()
@@ -110,7 +110,7 @@ final class TrendingViewController: BaseViewController, ViewType {
         })
     }
     
-    // MARK: - Storyboard -
+    // MARK: Storyboard -
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == searchResultSegueIdentiier) {

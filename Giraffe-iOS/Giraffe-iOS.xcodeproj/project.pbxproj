@@ -183,7 +183,6 @@
 				30D7D4A41D3A97D00063F684 /* ViewModel */,
 				30D7D4A21D3A97BF0063F684 /* View */,
 				30B3B7691D3A9F460077BCAA /* Utils */,
-				30FC78671D425E1400D5DE5E /* Reactive Extensions */,
 				30CA4C2B1D30298600A36F69 /* Framework Extensions */,
 				3089E8C71D2DA69800726903 /* Supporting Files */,
 			);
@@ -240,6 +239,7 @@
 				30A3B90C1D2F8A3A00ADEF41 /* CommonUserInterface.swift */,
 				30B3B76A1D3A9F600077BCAA /* RACHelpers.swift */,
 				30B3B7741D3AC0F70077BCAA /* UIKitExtensions.swift */,
+				30FC78681D425E4F00D5DE5E /* Image+RAC.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -294,14 +294,6 @@
 				30A0C2261D3C32B300627ECB /* AnimatedImageViewModel.swift */,
 			);
 			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		30FC78671D425E1400D5DE5E /* Reactive Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				30FC78681D425E4F00D5DE5E /* Image+RAC.swift */,
-			);
-			name = "Reactive Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,15 +370,11 @@
 					};
 					30061B981D29209800ABEF7F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QL6S7D28EA;
-						DevelopmentTeamName = "Yevhen Dubinin";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 30061B841D29209800ABEF7F;
 					};
 					30061BA31D29209800ABEF7F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QL6S7D28EA;
-						DevelopmentTeamName = "Yevhen Dubinin";
 						ProvisioningStyle = Automatic;
 						TestTargetID = 30061B841D29209800ABEF7F;
 					};
