@@ -374,8 +374,6 @@
 				TargetAttributes = {
 					30061B841D29209800ABEF7F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QL6S7D28EA;
-						DevelopmentTeamName = "Yevhen Dubinin";
 						ProvisioningStyle = Automatic;
 					};
 					30061B981D29209800ABEF7F = {

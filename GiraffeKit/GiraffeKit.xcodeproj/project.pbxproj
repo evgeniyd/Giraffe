@@ -255,8 +255,6 @@
 				TargetAttributes = {
 					30061BBF1D2920FE00ABEF7F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QL6S7D28EA;
-						DevelopmentTeamName = "Yevhen Dubinin";
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
