@@ -38,7 +38,7 @@ final class SearchResultViewModel: ViewModelType {
     let message                         = MutableProperty<String>("")
     let shouldHideItemsView             = MutableProperty<Bool>(true)
     let itemViewModels                  = MutableProperty<[AnimatedImageViewModel]>([])
-    let shouldDenoteTrending            = ConstantProperty<Bool>(false)
+    let shouldDenoteTrending            = ConstantProperty<Bool>(true)
     let isLoading                       = MutableProperty<Bool>(false)
     let statusImage                     = MutableProperty<UIImage?>(nil)
     
