@@ -1,4 +1,5 @@
 # Giraffe
+
 iOS client for Giphy (http://giphy.com) written in Swift with ReactiveCocoa
 
 ![image](App_Preview_Giraffe_Screens.png)
@@ -80,3 +81,7 @@ In order to build & run the app on a device, set the Development Team for the fo
 The app's look and feel wouldn't be possible without these guys:
 * [Lina Kononenko](https://www.facebook.com/linakononenko) (UI/UX)
 * [Max Semenenko](https://www.facebook.com/max.nitsa) (Giraffe arts)
+
+# License
+
+Giraffe is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
