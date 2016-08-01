@@ -33,7 +33,7 @@ struct TrendingViewModel: ViewModelType {
         static let RetryAttempts: Int = Int.max
     }
     
-    private let model: TrendingModelType
+    private let model: Pageable
     private let response                = MutableProperty<Response?>(nil)
     private let items                   = MutableProperty<[Item]>([])
     // messages
@@ -61,9 +61,11 @@ struct TrendingViewModel: ViewModelType {
     let searchResultViewModel       = MutableProperty<SearchResultViewModel?>(nil)
     let shouldEnableSearchButton    = MutableProperty<Bool>(false)
     
+    let didScrollToBottom           = MutableProperty<Void>()
+    
     // MARK: - Initialization -
     
-    init(model: TrendingModelType) {
+    init(model: Pageable) {
         self.model = model
         
         // Setup RAC bindings.
@@ -81,7 +83,7 @@ struct TrendingViewModel: ViewModelType {
                 self.statusImage.value = self.loadingImage
             })
             .flatMap(.Latest) { _ in
-                return self.model.startPage()
+                return self.model.nextPage()
             }
             .on(failed: { _ in
                     self.isLoading.value = false
@@ -100,11 +102,15 @@ struct TrendingViewModel: ViewModelType {
             .startWithResult { result in
                 self.response.value = result.value!
                 self.message.value = self.response.value!.zeroItems ? self.emptyResponseMsg : self.blankMsg
-        }
+            }
         
         self.items <~ self.response.producer
             .ignoreNil()
-            .map { response in response.data }
+            .map { response in
+                var result = self.items.value
+                result.appendContentsOf(response.data)
+                return result
+        }
         
         self.itemViewModels <~ self.items.producer.map { items in
             items.map { AnimatedImageViewModel(model: $0, denoteTrending: self.shouldDenoteTrending.value) }
@@ -120,8 +126,7 @@ struct TrendingViewModel: ViewModelType {
         self.searchText.producer
             .startWithResult { result in
                 if let query: String = result.value {
-                    let service = SearchService(query: query)
-                    let searchModel = SearchResult(service: service)
+                    let searchModel = SearchResult(query: query)
                     let searchResultViewModel = SearchResultViewModel(model: searchModel)
                     searchResultViewModel.headline.value = query
                     self.searchResultViewModel.value = searchResultViewModel
@@ -129,6 +134,22 @@ struct TrendingViewModel: ViewModelType {
         }
         
         self.shouldEnableSearchButton <~ self.isLoading.producer.map { !$0 }
+        
+        let loadNextPage = self.didScrollToBottom.producer
+        loadNextPage
+            // prevent from calling this at first place, before the first set is loaded
+            // this is weird, but it works
+            .filter {_ in self.items.value.count > 0 }
+            .flatMap(.Latest) { _ in
+                return self.model.nextPage()
+            }
+            // HACK: We'd like to receive an error and update the UI, but it well known
+            // that SignalProducer stops upon failure, thus we have to retry it.
+            // For now, retry as much as we can (Int.max times). There has to be more correct way to do this
+            .retry(Constants.RetryAttempts)
+            .startWithResult { result in
+                self.response.value = result.value!
+        }
     }
     
 }

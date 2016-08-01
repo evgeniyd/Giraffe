@@ -109,3 +109,48 @@ extension UIActivityIndicatorView {
         return lazyMutableProperty(self, key: &AssociationKey.animated, setter: { $0 ? self.startAnimating() : self.stopAnimating() }, getter: { self.isAnimating() })
     }
 }
+
+extension UISearchBar: UISearchBarDelegate {
+    public var rac_text: MutableProperty<String> {
+        return lazyAssociatedProperty(self, key: &AssociationKey.text, factory: {
+            self.delegate = self;
+            self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
+                .toSignalProducer()
+                .startWithResult { [weak self] _ in
+                    self?.changed()
+            }
+            
+            let property = MutableProperty<String>(self.text ?? "")
+            property.producer.startWithResult { result in
+                self.text = result.value
+            }
+            return property
+        })
+    }
+    
+    func changed() {
+        rac_text.value = self.text ?? ""
+    }
+    
+    func rac_searchBarSearchButtonClicked(callback: ((UISearchBar) -> Void)) {
+        self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBarSearchButtonClicked(_:)), fromProtocol: UISearchBarDelegate.self)
+            .toSignalProducer()
+            .startWithResult { result in
+                guard let tuple = result.value as? RACTuple else { return }
+                guard let searchBar = tuple.first as? UISearchBar else { return }
+                
+                callback(searchBar)
+        }
+    }
+    
+    func rac_searchBarCancelButtonClicked(callback: ((UISearchBar) -> Void)) {
+        self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBarCancelButtonClicked(_:)), fromProtocol: UISearchBarDelegate.self)
+            .toSignalProducer()
+            .startWithResult { result in
+                guard let tuple = result.value as? RACTuple else { return }
+                guard let searchBar = tuple.first as? UISearchBar else { return }
+                
+                callback(searchBar)
+        }
+    }
+}

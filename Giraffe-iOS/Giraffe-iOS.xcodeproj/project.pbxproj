@@ -40,6 +40,7 @@
 		30CA50DB1D4510CA0030E566 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA50DA1D4510CA0030E566 /* SearchResultViewModel.swift */; };
 		30D6EE861D411F3E00356747 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE841D411F3E00356747 /* Nuke.framework */; };
 		30D6EE871D411F3E00356747 /* NukeAnimatedImagePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */; };
+		30F2AE981D4E6D6500E3496F /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F2AE971D4E6D6500E3496F /* ModelType.swift */; };
 		30FC78651D4257DC00D5DE5E /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FC78641D4257DC00D5DE5E /* Unbox.framework */; };
 		30FC78691D425E4F00D5DE5E /* Image+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC78681D425E4F00D5DE5E /* Image+RAC.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		30CA50DA1D4510CA0030E566 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		30D6EE841D411F3E00356747 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = ../Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
 		30D6EE851D411F3E00356747 /* NukeAnimatedImagePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NukeAnimatedImagePlugin.framework; path = ../Carthage/Build/iOS/NukeAnimatedImagePlugin.framework; sourceTree = "<group>"; };
+		30F2AE971D4E6D6500E3496F /* ModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		30FC78641D4257DC00D5DE5E /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = ../Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 		30FC78661D425AD300D5DE5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30FC78681D425E4F00D5DE5E /* Image+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+RAC.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		30B3B76D1D3AA1350077BCAA /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				30F2AE971D4E6D6500E3496F /* ModelType.swift */,
 				30B3B76E1D3AA16C0077BCAA /* ViewType.swift */,
 				30B3B7701D3AA17E0077BCAA /* ViewModelType.swift */,
 				30B3B7721D3AA1C90077BCAA /* UIViewController+ViewType.swift */,
@@ -471,6 +474,7 @@
 				30061B8B1D29209800ABEF7F /* TrendingViewController.swift in Sources */,
 				30B3B7711D3AA17E0077BCAA /* ViewModelType.swift in Sources */,
 				30CA50DB1D4510CA0030E566 /* SearchResultViewModel.swift in Sources */,
+				30F2AE981D4E6D6500E3496F /* ModelType.swift in Sources */,
 				30CA4C2F1D302AC000A36F69 /* UIColor+HEX.swift in Sources */,
 				306B61E41D4576100001EDB2 /* BaseViewController.swift in Sources */,
 				30B3B7651D3A9D960077BCAA /* Trending.swift in Sources */,

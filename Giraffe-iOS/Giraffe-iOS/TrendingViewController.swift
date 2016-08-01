@@ -14,7 +14,7 @@ import GiraffeKit
 final class TrendingViewController: BaseViewController, ViewType {
     private let searchResultSegueIdentiier = "searchResultVC"
     
-    let viewModel: TrendingViewModel?                                       = TrendingViewModel(model: Trending(service: TrendingService()))
+    let viewModel: TrendingViewModel?                                       = TrendingViewModel(model: Trending())
     
     let searchBar                                                           = UISearchBar.giraffeSearchBar()
     var searchBarButtonItem: UIBarButtonItem?                               = nil
@@ -36,12 +36,13 @@ final class TrendingViewController: BaseViewController, ViewType {
         searchBarButtonItem?.target = self
         searchBarButtonItem?.action = #selector(didPressSearchButton)
         
-        animationPlaybackControl = navigationItem.leftBarButtonItem
-        animationPlaybackControl?.target = self
-        animationPlaybackControl?.action = #selector(didChangeAnimationPlayback)
-        animationPlaybackControl?.enabled = false // disabled for now
+        // Setup Search button
+        // TODO: uncomment when is ready to implement
+//        animationPlaybackControl = navigationItem.leftBarButtonItem
+//        animationPlaybackControl?.target = self
+//        animationPlaybackControl?.action = #selector(didChangeAnimationPlayback)
+//        animationPlaybackControl?.enabled = false // disabled for now
         
-        // Setup RAC bindings.
         setupBindings()
     }
 
@@ -59,24 +60,21 @@ final class TrendingViewController: BaseViewController, ViewType {
         searchButton.rac_enabled <~ viewModel!.shouldEnableSearchButton.producer.observeOn(UIScheduler())
         loadingIndicator.rac_animated <~ viewModel!.isLoading.producer.map{ $0 }.observeOn(UIScheduler())
         statusImageView.rac_image <~ viewModel!.statusImage.producer.observeOn(UIScheduler())
+
+        viewModel!.didScrollToBottom <~ collectionViewController.racsignal_didScrollToBottom
         
-        // subscribing for search text signal
-        self.rac_signalForSelector(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
-            .map { object in
-            guard let tuple = object as? RACTuple else {
-                return GiraffeError.UnknownError.nsError
-            }
-            guard let string = tuple.second as? String else {
-                return GiraffeError.UnknownError.nsError
-            }
-            return string
+        // search bar
+        viewModel!.searchText <~ self.searchBar.rac_text
+
+        self.searchBar.rac_searchBarSearchButtonClicked { [unowned self] searchBar in
+            searchBar.resignFirstResponder()
+            self.hideSearchBar()
+            self.performSegueWithIdentifier(self.searchResultSegueIdentiier, sender: self)
         }
-            .subscribeNext { object in
-            if let searchString = object as? String {
-                self.viewModel!.searchText.value = searchString
-            }
+        
+        self.searchBar.rac_searchBarCancelButtonClicked { [unowned self] searchBar in
+            self.hideSearchBar()
         }
-        searchBar.delegate = self
     }
 
     @objc func didChangeAnimationPlayback() {
@@ -126,16 +124,3 @@ final class TrendingViewController: BaseViewController, ViewType {
         }
     }
 }
-
-extension TrendingViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        self.hideSearchBar()
-        self.performSegueWithIdentifier(searchResultSegueIdentiier, sender: self)
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.hideSearchBar()
-    }
-}
-

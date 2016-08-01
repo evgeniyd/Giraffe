@@ -13,7 +13,7 @@ import Foundation
 public typealias ServiceActionBody = [String: String]
 
 protocol ServiceActionBodyTransformable {
-    func serviceActionBody() -> ServiceActionBody
+    func serviceActionBody() -> ServiceActionBody?
 }
 
 // MARK: - Transfer Protocol Type -
@@ -39,7 +39,7 @@ public protocol ServiceRequestable {
     func request() -> NSURLRequest
 }
 
-// Default implementation of ServiceProtocol & ServiceRequestable
+// MARK: - ServiceProtocol Default -
 
 extension ServiceProtocol { // ???: Do we need some constraints to this proto extension?
     public var transferProtocol: TransferProtocol {
@@ -62,6 +62,8 @@ extension ServiceProtocol { // ???: Do we need some constraints to this proto ex
         get { return nil }
     }
 }
+
+// MARK: - ServiceRequestable Default -
 
 extension ServiceRequestable where Self: ServiceProtocol {
     public func request() -> NSURLRequest {

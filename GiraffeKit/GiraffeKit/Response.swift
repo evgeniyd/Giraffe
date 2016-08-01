@@ -19,8 +19,21 @@ public struct Meta {
 }
 
 public struct Page {
+    public var totalCount: Int?
     public var count: Int
     public var offset: Int
+    
+    // MARK: - Convinient Methods - 
+    
+    public func hasNextPage() -> Bool {
+        guard let total = totalCount else { return true } // no limit
+        let index = indexOfFirstElementOnNextPage()
+        return (index > total) ? false : true
+    }
+    
+    public func indexOfFirstElementOnNextPage() -> Int {
+        return offset + count
+    }
 }
 
 public struct Response {
@@ -55,6 +68,7 @@ extension Page: Unboxable {
     public init(unboxer: Unboxer) {
         self.count = unboxer.unbox("count")
         self.offset = unboxer.unbox("offset")
+        self.totalCount = unboxer.unbox("total_count")
     }
 }
 

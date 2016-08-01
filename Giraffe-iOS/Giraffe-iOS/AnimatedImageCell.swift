@@ -19,8 +19,8 @@ class AnimatedImageCell: UICollectionViewCell {
     @IBOutlet weak var trendingIndicator: UIImageView!
     // MARK: - prepareForReuse Signal -
     
-    let rac_prepareForReuse_Signal: Signal<Void, NoError>
-    let rac_prepareForReuse_Observer:Observer<Void, NoError>
+    let racsignal_prepareForReuse: Signal<Void, NoError>
+    let racobserver_prepareForReuse: Observer<Void, NoError>
     
     // MARK: - Initialization -
     
@@ -29,9 +29,7 @@ class AnimatedImageCell: UICollectionViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        let (signal, observer) = Signal<Void, NoError>.pipe()
-        rac_prepareForReuse_Signal = signal
-        rac_prepareForReuse_Observer = observer
+        (racsignal_prepareForReuse, racobserver_prepareForReuse) = Signal<Void, NoError>.pipe()
         super.init(coder: aDecoder)
         contentView.backgroundColor = .giraffeLightGray()
     }
@@ -44,7 +42,7 @@ class AnimatedImageCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.rac_prepareForReuse_Observer.sendNext()
+        self.racobserver_prepareForReuse.sendNext()
     }
     
     // MARK: - Configuration -
@@ -52,20 +50,15 @@ class AnimatedImageCell: UICollectionViewCell {
     func bind(viewModel vm: AnimatedImageViewModel) {
         self.viewModel = vm
         
-        self.animatedImageView.rac_animatedImage <~ self.viewModel!.image.producer.observeOn(UIScheduler()).takeUntil(self.rac_prepareForReuse_Signal)
-        self.trendingIndicator.rac_hidden <~ self.viewModel!.shouldHideTrendingIndicator.producer.observeOn(UIScheduler()).takeUntil(self.rac_prepareForReuse_Signal)
+        self.animatedImageView.rac_animatedImage <~ self.viewModel!.image.producer.observeOn(UIScheduler()).takeUntil(self.racsignal_prepareForReuse)
+        self.trendingIndicator.rac_hidden <~ self.viewModel!.shouldHideTrendingIndicator.producer.observeOn(UIScheduler()).takeUntil(self.racsignal_prepareForReuse)
         
         // ACTIVATE upon binding completes
         // DEACTIVATE loading upon prepare for reuse
         let (activeSignal, activeObserver) = Signal<Bool, NoError>.pipe()
-        let inactiveSignal = self.rac_prepareForReuse_Signal.map { _ in false }
+        let inactiveSignal = self.racsignal_prepareForReuse.map { _ in false }
         self.viewModel!.isActive <~ Signal.merge([inactiveSignal,activeSignal])
         
         activeObserver.sendNext(true)
-        
-        // DEBUG:
-//        self.rac_prepareForReuse_Signal.observeNext { next in
-//            print("rac_prepareForReuse_Signal: \(next)")
-//        }
     }
 }

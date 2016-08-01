@@ -12,38 +12,22 @@ import GiraffeKit
 
 // MARK: - Model Implementation -
 
-final class SearchResult {
-    private let service: SearchService
+final class SearchResult: Pageable {
+    private let query: String
+    var page: Page?
     
-    init(service s: SearchService) {
-        self.service = s
+    init(query q: String) {
+        self.query = q
     }
     
-    func startPage() -> SignalProducer<Response?, GiraffeError> {
-        let session = NSURLSession.sharedSession()
-        let request = self.service.request()
-        let retryAttempts = 3
+    // MARK: - Pageable -
+    
+    func nextPage() -> SignalProducer<Response?, GiraffeError> {
+        let params = getNextPageParameters()
+        let service = SearchService(query: self.query, parameters: params)
         
-        return session.rac_dataWithRequest(request)
-            .retry(retryAttempts)
-            .mapError{ _ in
-                return GiraffeError.NetworkError
-            }
-            .flatMapError { networkError in
-                print(networkError)
-                return SignalProducer(error: networkError)
-            }
-            .map { data, URLResponse in
-                // TODO: #1 make this reactive, so
-                switch Response.decodedFrom(data: data, response: URLResponse) {
-                case .Failure(let decodeError):
-                    print("Parsing error occurred. Error was:\n\(decodeError)")
-                    // TODO: #2 we can do the following:
-                    //                    return SignalProducer(error: GiraffeError.ParserError)
-                    return nil
-                case .Success(let result):
-                    return result
-                }
-        }
+        return invoke(service: service)
     }
 }
+
+extension SearchResult: Invokable { }

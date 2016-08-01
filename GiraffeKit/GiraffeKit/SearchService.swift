@@ -9,30 +9,37 @@
 import Foundation
 
 public struct Search: ServiceActionBodyTransformable {
-    private(set) var query: String // search query term or phrase
-    private(set) var limit: Int? // (optional) number of results to return, maximum 100. Default 25.
-    private(set) var offset: Int? // (optional) results offset, defaults to 0.
-    private(set) var rating: Rating? // limit results to those rated (y,g, pg, pg-13 or r).
-    // TODO: add fmt (fmt - (optional) return results in html or json format (useful for viewing responses as GIFs to debug/test) )
+    private let query: String // search query term or phrase
+    private let parameters: Parameters?
     
-    init(query: String) {
+    init(query: String, parameters: Parameters? = nil) {
         self.query = query
+        self.parameters = parameters
     }
     
-    func serviceActionBody() -> ServiceActionBody {
+    func serviceActionBody() -> ServiceActionBody? {
         let escapedQuery = query.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-        let actionBody = ["q": escapedQuery!]
+        var actionBody = ["q": escapedQuery!]
+        guard let _ = self.parameters else {
+            return actionBody
+        }
+        guard let paramBody = self.parameters!.serviceActionBody() else {
+            return actionBody
+        }
+
+        for key in paramBody.keys {
+            actionBody[key] = paramBody[key]
+        }
         return actionBody
     }
 }
 
 public struct SearchService: ServiceProtocol {
-    public var actionPath = "search"
-    public var actionBody: ServiceActionBody?
+    public let actionPath = "search"
+    public let actionBody: ServiceActionBody?
     
-    
-    public init(query: String) {
-        self.init(search: Search(query: query))
+    public init(query: String, parameters: Parameters? = nil) {
+        self.init(search: Search(query: query, parameters: parameters))
     }
     
     public init(search: Search) {

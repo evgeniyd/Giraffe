@@ -47,7 +47,7 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="PJv-mV-oHb">
                                 <color key="color" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="d1h-lo-aor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="128" placeholderIntrinsicHeight="225" translatesAutoresizingMaskIntoConstraints="NO" id="d1h-lo-aor"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -64,7 +64,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XxA-C5-AOM">
-                        <barButtonItem key="leftBarButtonItem" image="playpause" id="b41-IO-PMS"/>
                         <barButtonItem key="rightBarButtonItem" image="mainsearch" id="0Kn-Kz-qga"/>
                     </navigationItem>
                     <connections>
@@ -105,7 +104,7 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="spb-t2-3zZ">
                                 <color key="color" red="0.72156862749999995" green="0.72156862749999995" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notfound" translatesAutoresizingMaskIntoConstraints="NO" id="Sbp-Sl-AbN"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="340" placeholderIntrinsicHeight="225" translatesAutoresizingMaskIntoConstraints="NO" id="Sbp-Sl-AbN"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -122,11 +121,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="EVs-kh-Q0Y">
-                        <barButtonItem key="rightBarButtonItem" image="family" id="LBU-il-6Xg"/>
+                        <barButtonItem key="rightBarButtonItem" image="family" id="LBU-il-6Xg">
+                            <connections>
+                                <action selector="onFilterButtonTap:" destination="M6j-Ow-nMn" id="Rn3-gH-t7o"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="RN0-CN-hSk" id="SLt-Sq-e5W"/>
-                        <outlet property="familyFrendlyButton" destination="LBU-il-6Xg" id="nnV-5y-7Sd"/>
+                        <outlet property="filterButton" destination="LBU-il-6Xg" id="qxV-fv-yZv"/>
                         <outlet property="loadingIndicator" destination="spb-t2-3zZ" id="CZD-Hu-qvq"/>
                         <outlet property="messageLabel" destination="to6-GI-F9K" id="ldS-wj-dJW"/>
                         <outlet property="statusImageView" destination="Sbp-Sl-AbN" id="tK8-gO-Ovy"/>
@@ -189,10 +192,7 @@
     </scenes>
     <resources>
         <image name="family" width="29" height="19"/>
-        <image name="loading" width="128" height="225"/>
         <image name="mainsearch" width="17" height="17"/>
-        <image name="notfound" width="340" height="225"/>
-        <image name="playpause" width="23" height="15"/>
         <image name="trending" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>

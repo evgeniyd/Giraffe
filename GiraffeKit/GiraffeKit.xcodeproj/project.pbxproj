@@ -30,6 +30,7 @@
 		30A357FA1D3EF7EA00B6183F /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307DF0E91D3ECB5B003EFE41 /* Unbox.framework */; };
 		30A357FB1D3EF91A00B6183F /* NSDateFormatter+GiraffeKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A357F51D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift */; };
 		30A357FD1D3EFA6500B6183F /* Unbox.framework in Carthage Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 307DF0E91D3ECB5B003EFE41 /* Unbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30F2AE9A1D4E6F4D00E3496F /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F2AE991D4E6F4D00E3496F /* Parameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		30A357F31D3EF1BE00B6183F /* Framable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Framable.swift; sourceTree = "<group>"; };
 		30A357F51D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+GiraffeKit.swift"; sourceTree = "<group>"; };
 		30A357F71D3EF66B00B6183F /* NSDateFormatter+GiraffeKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+GiraffeKitTests.swift"; sourceTree = "<group>"; };
+		30F2AE991D4E6F4D00E3496F /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				30502EA11D2D19A60092A8AD /* Service.swift */,
 				30502EA41D2D1AC60092A8AD /* TrendingService.swift */,
 				3089E8C11D2D943E00726903 /* SearchService.swift */,
+				30F2AE991D4E6F4D00E3496F /* Parameters.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				30A0C2291D3C4E6400627ECB /* Error.swift in Sources */,
 				30A357F61D3EF4E100B6183F /* NSDateFormatter+GiraffeKit.swift in Sources */,
 				307DF0F11D3ED215003EFE41 /* Response.swift in Sources */,
+				30F2AE9A1D4E6F4D00E3496F /* Parameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

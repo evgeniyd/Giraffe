@@ -19,6 +19,12 @@ public struct Item {
     public var rating: Rating
     public var trendingDate: NSDate?
     public var images: [Image]
+    
+    // MARK: - FamilyFriendlyDetectable
+    
+    public func isFamilyFriendly() -> Bool {
+        return self.rating.isFamilyFriendly()
+    }
 }
 
 ////////////////////////////////////
@@ -30,13 +36,34 @@ public enum ContentType: String {
     case unknown
 }
 
-public enum Rating: String {
-    case y
-    case g
-    case pg
-    case pg13 = "pg-13"
-    case r
+public enum Rating: String, CustomStringConvertible, FamilyFriendlyDetectable {
+    // Source: https://www.quora.com/What-do-G-PG-PG-13-R-NC-17-movie-ratings-mean
+    case y                  // ???
+    case g                  // General Audiences. All ages admitted.
+    case pg                 // Parental Guidance Suggested. Some material may not be suitable for children.
+    case pg13 = "pg-13"     // Parents Strongly Cautioned. Some material may be inappropriate for children under 13.
+    case r                  // Restricted. Under 17 requires accompanying parent or adult guardian.
     case unspecified = ""
+    
+    // MARK: - FamilyFriendlyDetectable
+    
+    public func isFamilyFriendly() -> Bool {
+        //rated y,g, or pg
+        switch self {
+        case .y,.g,.pg:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    // MARK: - CustomStringConvertible
+    
+    public var description: String {
+        get {
+            return self.rawValue
+        }
+    }
 }
 
 public struct Image {
@@ -89,6 +116,13 @@ public enum ImageVariant {
     case unknown
 }
 
+////////////////////////////////////
+// MARK: - Protocols -
+////////////////////////////////////
+
+public protocol FamilyFriendlyDetectable {
+    func isFamilyFriendly() -> Bool
+}
 ////////////////////////////////////
 // MARK: - Unboxable extension -
 ////////////////////////////////////

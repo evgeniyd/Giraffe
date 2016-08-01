@@ -11,16 +11,19 @@ import ReactiveCocoa
 import Result
 import GiraffeKit
 
-struct SearchResultViewModel: ViewModelType {
+final class SearchResultViewModel: ViewModelType {
     
     private struct Constants {
         static let RetryAttempts: Int = Int.max
     }
     
-    private let model: SearchResult
+    private let model                   : SearchResult
     private let response                = MutableProperty<Response?>(nil)
     private let items                   = MutableProperty<[Item]>([])
-    private let isFamilyFriendlyActive  = MutableProperty<Bool>(true)
+    private let isFamilyFilterActive    = MutableProperty<Bool>(false)
+    private let isFamilyFilterEnable    = MutableProperty<Bool>(true)
+    private let filteredItems           = MutableProperty<[Item]>([])
+    
     // messages
     private let fetchErrorMsg           = "Something went wrong while getting trending"
     private let blankMsg                = ""
@@ -42,41 +45,41 @@ struct SearchResultViewModel: ViewModelType {
     // MARK: - ViewModel Public Properties -
     
     let headline                        = MutableProperty<String?>(nil)
-    var toggleFamilyFilter: RACCommand? = nil
-    let shouldEnableFamilyFilterButton  = MutableProperty<Bool>(false)
+    // TODO: make it const and Not Optional
+    private(set) var toggleFamilyFilter : Action<Void,Void,NoError>?
     let shouldSelectFamilyFilterButton  = MutableProperty<Bool>(false)
     
     // MARK: - Initialization -
     
     init(model: SearchResult) {
         self.model = model
-        
-        // Setup RAC bindings.
-        self.setupBindings()
-    }
-    
-    // MARK: - RAC -
-    
-    func setupBindings() {
+
+        shouldSelectFamilyFilterButton <~ isFamilyFilterActive
+        isFamilyFilterEnable <~ isLoading.producer.map { !$0 }
+        toggleFamilyFilter = Action<Void, Void, NoError>(enabledIf: isFamilyFilterEnable, { _ -> SignalProducer<Void, NoError> in
+            return SignalProducer<Void, NoError> { [unowned self] observer, _ in
+                self.isFamilyFilterActive.value = !self.isFamilyFilterActive.value
+                observer.sendCompleted()
+            }
+        })
         
         self.isActive.producer
             .filter { $0 }
             .mapError { _ in
                 return GiraffeError.UnknownError
-            }.on(next: { _ in
+            }.on(next: { [unowned self] _ in
                 self.isLoading.value = true
                 self.statusImage.value = self.loadingImage
             })
-
-            .flatMap(.Latest) { _ in
-                return self.model.startPage()
+            .flatMap(.Latest) { [unowned self] _ in
+                return self.model.nextPage()
             }
-            .on(failed: { _ in
-                    self.isLoading.value = false
-                    self.message.value = self.fetchErrorMsg
-                    self.statusImage.value = nil
+            .on(failed: { [unowned self] _ in
+                self.isLoading.value = false
+                self.message.value = self.fetchErrorMsg
+                self.statusImage.value = nil
                 },
-                next: { _ in
+                next: { [unowned self] _ in
                     self.isLoading.value = false
                     self.statusImage.value = nil
                 }
@@ -85,7 +88,7 @@ struct SearchResultViewModel: ViewModelType {
             // that SignalProducer stops upon failure, thus we have to retry it.
             // For now, retry as much as we can (Int.max times). There has to be more correct way to do this
             .retry(Constants.RetryAttempts)
-            .startWithResult { result in
+            .startWithResult { [unowned self] result in
                 self.response.value = result.value!
                 self.message.value = self.response.value!.zeroItems ? self.emptyResponseMsg : self.blankMsg
         }
@@ -96,18 +99,25 @@ struct SearchResultViewModel: ViewModelType {
                 response.data
         }
         
-        self.itemViewModels <~ self.items.producer.map { items in
-            items.map { AnimatedImageViewModel(model: $0, denoteTrending: self.shouldDenoteTrending.value) }
+        self.filteredItems <~ self.items.producer
+            .map() { items in
+                let filtered = items.filter{ $0.isFamilyFriendly() }
+                return filtered
         }
         
-        let noItemsSignal = self.items.producer.map { items in
-            items.count == 0
+        let updates = combineLatest(self.items.producer, self.filteredItems.producer, self.isFamilyFilterActive.producer)
+        self.itemViewModels <~ updates.producer.map { items, filteredItems, filter in
+            if filter {
+                return filteredItems.map { AnimatedImageViewModel(model: $0, denoteTrending: self.shouldDenoteTrending.value) }
+            }
+            else {
+                return items.map { AnimatedImageViewModel(model: $0, denoteTrending: self.shouldDenoteTrending.value) }
+            }
         }
         
+        let noItemsSignal = self.items.producer.map { $0.count == 0 }
         self.shouldHideItemsView <~ noItemsSignal
         self.statusImage <~ noItemsSignal.map { $0 ? self.notFoundImage : nil }
-        self.shouldEnableFamilyFilterButton <~ self.isLoading.producer.map { !$0 }
-        self.shouldSelectFamilyFilterButton <~ self.isFamilyFriendlyActive
     }
 }
 

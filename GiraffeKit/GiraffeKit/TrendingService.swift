@@ -9,9 +9,18 @@
 import Foundation
 
 public struct TrendingService: ServiceProtocol {
-    public var actionPath = "trending"
-    public var actionBody: ServiceActionBody? = nil
-    public init() { }
+    public let actionPath = "trending"
+    public let actionBody: ServiceActionBody?
+    public init() {
+        actionBody = nil
+    }
+    public init(parameters: Parameters) {
+        guard let body = parameters.serviceActionBody() where body.isEmpty == false else {
+            actionBody = nil
+            return;
+        }
+        actionBody = parameters.serviceActionBody()
+    }
 }
 
 extension TrendingService: ServiceRequestable {}

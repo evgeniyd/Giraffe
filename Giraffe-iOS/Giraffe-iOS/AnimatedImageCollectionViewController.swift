@@ -8,13 +8,33 @@
 
 import UIKit
 import ReactiveCocoa
+import Result
 import GiraffeKit
 
 final class AnimatedImageCollectionViewController: UICollectionViewController {
     private let animatedImageCellIdentifier = "AnimatedImageCellIdentifier"
-    private var flipBackgroundPatternCounter: Int = 0
+    private let racobserver_didScrollToBottom: Observer<Void, NoError>
+    private let distanceToReportDidScrollToBottom: CGFloat = 10.0
     
     let rac_itemViewModels = MutableProperty<[AnimatedImageViewModel]>([])
+    let racsignal_didScrollToBottom: Signal<Void, NoError>
+    
+    // MARK: - Initializer -
+    
+    override init(collectionViewLayout layout: UICollectionViewLayout) {
+        (racsignal_didScrollToBottom, racobserver_didScrollToBottom) = Signal<Void, NoError>.pipe()
+        super.init(collectionViewLayout: layout)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        (racsignal_didScrollToBottom, racobserver_didScrollToBottom) = Signal<Void, NoError>.pipe()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        (racsignal_didScrollToBottom, racobserver_didScrollToBottom) = Signal<Void, NoError>.pipe()
+        super.init(coder: aDecoder)
+    }
     
     // MARK: - View Life Cycle -
     
@@ -47,11 +67,27 @@ final class AnimatedImageCollectionViewController: UICollectionViewController {
     // MARK: - RAC binding -
     
     private func setupBindings() {
+        // ???: do we need some timeout, so reloadData is not called in the same run loop?
         self.rac_itemViewModels.producer
             .observeOn(UIScheduler())
             .on (next: { _ in
                 self.collectionView!.reloadData()
             })
             .start()
+    }
+    
+    // MARK: - UIScrollViewDelegate - 
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let size = scrollView.contentSize
+        let inset = scrollView.contentInset
+        let y: CGFloat = offset.y + bounds.size.height - inset.bottom
+        let h: CGFloat = size.height
+        
+        if (offset.y > 0.0 && y > h + distanceToReportDidScrollToBottom) {
+            racobserver_didScrollToBottom.sendNext()
+        }
     }
 }
